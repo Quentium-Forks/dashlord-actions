@@ -7,9 +7,9 @@ inputs:
     description: URL to check
     required: true
   output:
-    description: "Path to output file. defaults to detect-404.json"
+    description: "Path to output file. defaults to 404.json"
     required: true
-    default: "detect-404.json"
+    default: "404.json"
   depth:
     description: wget spider depth
     required: false

@@ -17,29 +17,29 @@ type ColorVariant = "info" | "success" | "warning" | "danger";
 
 type DashlordTool =
   | "404"
-  | "http"
-  | "lighthouse"
-  | "nuclei"
-  | "testssl"
-  | "nmap"
-  | "thirdparties"
-  | "updownio"
-  | "wappalyzer"
-  | "dependabot"
-  | "codescan"
-  | "zap"
-  | "stats"
-  | "budget_page"
-  | "screenshot"
-  | "trivy"
   | "betagouv"
-  | "github_repository"
+  | "budget_page"
+  | "budget_page"
+  | "codescan"
   | "declaration-a11y"
   | "declaration-rgpd"
-  | "ecoindex"
+  | "dependabot"
   | "dsfr"
-  | "budget_page"
-  | "sonarcloud";
+  | "ecoindex"
+  | "github_repository"
+  | "http"
+  | "lighthouse"
+  | "nmap"
+  | "nuclei"
+  | "screenshot"
+  | "sonarcloud"
+  | "stats"
+  | "testssl"
+  | "thirdparties"
+  | "trivy"
+  | "updownio"
+  | "wappalyzer"
+  | "zap";
 
 // this should be maintained in https://github.com/SocialGouv/dashlord/blob/main/schema.json
 type DashLordConfig = {
@@ -61,7 +61,7 @@ type DashLordConfig = {
 
 type Operator = {
   /** Default direction is horizontal */
-  logo: string | { src: string; direction: "horizontal" | "vertical" };
+  logo: string | { src: string; direction: "horizontal" | "vertical"; };
   name: string;
 };
 
@@ -349,34 +349,34 @@ type UpDownReport = {
   last_check_at: string;
 };
 
-type Wget404Report = { link: string }[];
+type Wget404Report = { link: string; }[];
 
-type DsFrReport = { detected: boolean };
+type DsFrReport = { detected: boolean; };
 
 type UrlReport = UrlConfig & {
-  lhr?: LighthouseReport | LighthouseReport[] | null;
-  testssl?: SslTestReport | null;
-  nmap?: NmapReport | null;
-  http?: HttpReport | null;
-  nuclei?: NucleiReport | null;
-  thirdparties?: ThirdPartiesReport | null;
-  zap?: ZapReport | null;
-  wappalyzer?: WappalyzerReport | null;
-  updownio?: UpDownReport | null;
-  dependabot?: DependabotReport | null;
-  codescan?: CodescanReport | null;
-  screenshot?: boolean | null;
-  summary: UrlReportSummary;
-  stats?: PageReport | null;
-  budget_page?: PageReport | null;
-  github_repository?: PageReport | null;
   404?: Wget404Report | null;
-  trivy?: TrivyReport | null;
+  betagouv?: BetagouvReport;
+  budget_page?: PageReport | null;
+  codescan?: CodescanReport | null;
   "declaration-a11y"?: DeclarationA11yReport | null;
   "declaration-rgpd"?: DeclarationRgpdReport | null;
-  betagouv?: BetagouvReport;
-  ecoindex?: EcoIndexReport;
+  dependabot?: DependabotReport | null;
   dsfr?: DsFrReport;
+  ecoindex?: EcoIndexReport;
+  github_repository?: PageReport | null;
+  http?: HttpReport | null;
+  lhr?: LighthouseReport | LighthouseReport[] | null;
+  nmap?: NmapReport | null;
+  nuclei?: NucleiReport | null;
+  screenshot?: boolean | null;
+  stats?: PageReport | null;
+  summary: UrlReportSummary;
+  testssl?: SslTestReport | null;
+  thirdparties?: ThirdPartiesReport | null;
+  trivy?: TrivyReport | null;
+  updownio?: UpDownReport | null;
+  wappalyzer?: WappalyzerReport | null;
+  zap?: ZapReport | null;
 };
 
 type BetagouvReportPhase = {

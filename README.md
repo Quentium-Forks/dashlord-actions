@@ -6,10 +6,10 @@ Basic GitHub Actions used in [dashlord](https://github.com/socialgouv/dashlord) 
 
 | Action           | Usage                                               |
 |------------------|-----------------------------------------------------|
+| 404              | Check 404 on some URL                               |
 | check-url        | Check the existence of given URL                    |
 | declaration-a11y | Verify accessibility mention                        |
 | declaration-rgpd | Check legal mentions, GCU, confidentiality policy   |
-| check-404        | Check 404 on some URL                               |
 | dsfr             | Check if DSFR is used                               |
 | ecoindex         | Compute webpage ecoscore with ecoindex-cli          |
 | get-html         | Get raw HTML of any webpage                         |

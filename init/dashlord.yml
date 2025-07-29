@@ -1,24 +1,24 @@
 title: Test 1
 tools:
-  screenshot: true
-  nmap: true
-  zap: true
-  wappalyzer: true
-  http: true
-  testssl: false
-  lighthouse: true
-  thirdparties: true
-  nuclei: false
-  updownio: true
-  dependabot: true
-  codescan: true
-  budget_page: true
-  stats: true
   404: true
+  budget_page: true
+  codescan: true
   declaration-a11y: true
   declaration-rgpd: true
-  ecoindex: true
+  dependabot: true
   dsfr: true
+  ecoindex: true
+  http: true
+  lighthouse: true
+  nmap: true
+  nuclei: false
+  screenshot: true
+  stats: true
+  testssl: false
+  thirdparties: true
+  updownio: true
+  wappalyzer: true
+  zap: true
 urls:
   - url: https://www.free.fr
     title: Free

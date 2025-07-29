@@ -46,21 +46,21 @@ jobs:
 ```yaml
 title: Test 1
 tools:
-  screenshot: true
-  nmap: true
-  zap: true
-  wappalyzer: true
-  http: true
-  testssl: true
-  lighthouse: true
-  thirdparties: true
-  nuclei: false
-  updownio: true
-  dependabot: true
-  codescan: true
-  stats: true
-  budget_page: true
   404: true
+  budget_page: true
+  codescan: true
+  dependabot: true
+  http: true
+  lighthouse: true
+  nmap: true
+  nuclei: false
+  screenshot: true
+  stats: true
+  testssl: true
+  thirdparties: true
+  updownio: true
+  wappalyzer: true
+  zap: true
 urls:
   - url: https://www.free.fr
     title: Free

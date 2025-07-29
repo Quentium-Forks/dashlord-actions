@@ -58,21 +58,21 @@ runs:
             try:
                 # Get the last commit date for the file
                 result = subprocess.run(
-                    ['git', 'log', '-1', '--format=%at', '--', path],
+                    ["git", "log", "-1", "--format=%at", "--", path],
                     capture_output=True,
                     text=True
                 )
                 print(result)
                 if result.stdout.strip():
                     return float(result.stdout.strip())
-                return float('-inf')  # File doesn't exist in git history
+                return float("-inf")  # File doesn't exist in git history
             except Exception:
                 print("error")
-                return float('-inf')  # Error running git command
+                return float("-inf")  # Error running git command
 
 
         # Read URLs from file
-        with open(os.environ.get("TXT_PATH"), 'r') as f:
+        with open(os.environ.get("TXT_PATH"), "r") as f:
             urls = [line.strip() for line in f if line.strip()]
 
         # Sort URLs based on existence and modification time
@@ -90,7 +90,7 @@ runs:
 
         # Output the matrix JSON to GITHUB_OUTPUT
         urls_json = json.dumps([{"url": url} for url in matrix_urls])
-        with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
+        with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
             fh.write(f"sites={urls_json}")
         EOF
 

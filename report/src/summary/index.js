@@ -22,7 +22,7 @@ const tools = {
   /** @param {PageReport} report */
   github_repository: (report) => require("./github_repository")(report),
   /** @param {Wget404Report} report */
-  404: (report) => report && { 404: report.length || "A+" },
+  404: (report) => require("./404")(report),
   /** @param {TrivyReport} report */
   trivy: (report) => require("./trivy")(report),
   /** @param {DeclarationA11yReport} report */
@@ -58,4 +58,5 @@ const computeSummary = (urlReport) => {
   });
   return summary;
 };
+
 module.exports = { computeSummary };
