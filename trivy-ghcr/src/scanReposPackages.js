@@ -4,7 +4,7 @@ const pAll = require("p-all");
 const fetchReposPackages = require("./fetchReposPackages");
 
 const trivyCmd = (image) =>
-  `docker run --pull=always --rm ghcr.io/aquasecurity/trivy:0.19.2 --quiet image --no-progress --format json --severity MEDIUM,HIGH,CRITICAL ${image}`;
+  `docker run --pull=always --rm ghcr.io/aquasecurity/trivy:0.64.1 --quiet image --no-progress --format json --severity MEDIUM,HIGH,CRITICAL ${image}`;
 
 const scanReposPackages = async (repos) => {
   // get all packages

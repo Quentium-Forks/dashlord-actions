@@ -1,4 +1,4 @@
-const generateJson = require("../src");
+const generateJson = require("../src/index");
 
 test("get results from sonarcloud", async () => {
   const result = await generateJson(["sensgithub/eHospital", "zabbix/zabbix"]);

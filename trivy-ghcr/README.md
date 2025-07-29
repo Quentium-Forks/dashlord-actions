@@ -1,29 +1,25 @@
-# trivy-ghcr
+# DashLord Actions - trivy-ghcr
 
-Run trivy scans on some repos GHCR images and produce JSON output
+Run trivy scans on multiple GHCR images repos and produce JSON output
 
 ## Usage
 
 ```yaml
-name: GHCR trivy
-
-on:
-  push:
-    tags:
-      - "v*"
-
 jobs:
-  trivy:
-    name: trivy scan on GHCR
+  scans:
+    name: Trivy scans on GHCR
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: test
-        uses: socialgouv/dashlord-actions/ghcr-trivy@main
+        uses: SocialGouv/dashlord-actions/trivy-ghcr@v1
         with:
           repos: socialgouv/sample-next-app,socialgouv/www
-        # output: trivy.json
-      - uses: actions/upload-artifact@v2
+          output: trivy.json
+
+      - uses: actions/upload-artifact@v4
         with:
           name: trivy.json
           path: trivy.json

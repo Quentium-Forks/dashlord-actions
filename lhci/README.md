@@ -1,20 +1,23 @@
-# socialgouv/dashlord-actions/lhci
+# DashLord Actions - lhci
 
-Collect LHCI results for any URL
+Collect LHCI results for a URL
 
 ## Usage
 
 ```yaml
 jobs:
-  html:
+  scans:
+    name: LHCI scans
+    runs-on: ubuntu-latest
     steps:
-      - uses: "socialgouv/dashlord-actions/lhci@v1"
+      - uses: SocialGouv/dashlord-actions/lhci@v1
         with:
           url: ${{ matrix.url }}
           # optionals
           language: fr
           collectFlags: "--numberOfRuns=3"
           chromeFlags: "--window-size=800x600 --disable-gpu"
+
       - name: demo
         run: |
           cat result.html

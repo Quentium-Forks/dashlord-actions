@@ -1,19 +1,21 @@
-name: "DashLord eco-index action"
+name: "Ecoindex score scan action"
+
 description: "Run ecoindex test and output JSON result"
+
 inputs:
   url:
     description: URL to check eco-index
     required: true
   output:
     description: "Path to output file. defaults to ecoindex.json"
-    default: "ecoindex.json"
     required: true
+    default: "ecoindex.json"
 
 runs:
   using: "composite"
   steps:
     - shell: bash
       run: |
-        docker run --name ecoindex vvatelot/ecoindex-cli:v2.20.1 ecoindex-cli analyze --url="${{ inputs.url }}" --no-interaction --export-format json --output-file /code/out.json
+        docker run --name ecoindex vvatelot/ecoindex-cli:2.30.0 ecoindex-cli analyze --url="${{ inputs.url }}" --no-interaction --export-format json --output-file /code/out.json
         docker cp ecoindex:/code/out.json "${{ github.workspace }}/${{ inputs.output }}"
         cat "${{ github.workspace }}/${{ inputs.output }}"

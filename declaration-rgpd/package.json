@@ -1,16 +1,16 @@
 {
   "name": "declaration-rgpd",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/index.js",
   "license": "Apache-2.0",
-  "dependencies": {
-    "fast-fuzzy": "^1.10.10",
-    "jsdom": "^19.0.0"
-  },
   "scripts": {
     "test": "jest"
   },
+  "dependencies": {
+    "fast-fuzzy": "^1.12.0",
+    "jsdom": "^26.1.0"
+  },
   "devDependencies": {
-    "jest": "^28.1.0"
+    "jest": "^29.7.0"
   }
 }

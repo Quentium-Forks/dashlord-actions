@@ -1,4 +1,5 @@
-name: "Déclaration a11y scan action"
+name: "Acessibility declaration scan action"
+
 description: "Détecte la présence d'une déclaration d'accessibilité"
 
 inputs:
@@ -7,8 +8,8 @@ inputs:
     required: true
   output:
     description: "Path to output file. defaults to declaration-a11y.json"
-    default: "declaration-a11y.json"
     required: true
+    default: "declaration-a11y.json"
 
 runs:
   using: "composite"
@@ -18,14 +19,16 @@ runs:
       run: |
         cd ${{ github.action_path }}
         yarn
+
     - name: Get URL HTML
-      uses: socialgouv/dashlord-actions/get-html@v1
+      uses: ./get-html
       with:
         url: ${{ inputs.url }}
         output: result.html
+
     - name: Detect declaration a11y
       shell: bash
       run: |
         cd ${{ github.action_path }}
-        node index ${{ inputs.url }} ${{ github.workspace }}/result.html > ${{ github.workspace }}/${{ inputs.output }}
+        node ${{ github.action_path }}/src/index.js ${{ inputs.url }} ${{ github.workspace }}/result.html > ${{ github.workspace }}/${{ inputs.output }}
         cat ${{ github.workspace }}/${{ inputs.output }}

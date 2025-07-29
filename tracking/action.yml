@@ -1,0 +1,43 @@
+name: "Tracking services detection action"
+
+description: "Detect the tracking service on a website"
+
+inputs:
+  url:
+    description: URL to read
+    required: true
+  output:
+    description: "Path to output file. defaults to tracking.json"
+    required: true
+    default: "tracking.json"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Get URL HTML
+      uses: ./get-html
+      with:
+        url: ${{ inputs.url }}
+        output: tracking-html.html
+
+    - shell: bash
+      run: |
+        set +e
+
+        if grep -Eq "(eulerian)" ./tracking-html.html; then
+          JSON="{\"tracking\": true, \"service\": \"eulerian\"}"
+        elif grep -Eq "(matomo)" ./tracking-html.html; then
+          JSON="{\"tracking\": true, \"service\": \"matomo\"}"
+        elif grep -Eq "(piwik)" ./tracking-html.html; then
+          JSON="{\"tracking\": true, \"service\": \"piwik\"}"
+        elif grep -Eq "(piano|aticdn|smarttag)" ./tracking-html.html; then
+          JSON="{\"tracking\": true, \"service\": \"piano\"}"
+        elif grep -Eq "(google|gtag|gtm)" ./tracking-html.html; then
+          JSON="{\"tracking\": true, \"service\": \"google\"}"
+        elif grep -Eq "(tarteaucitron|tac)" ./tracking-html.html; then
+          JSON="{\"tracking\": null, \"service\": null}"
+        else
+          JSON="{\"tracking\": false}"
+        fi
+
+        echo "$JSON" > ${{ github.workspace }}/${{ inputs.output }}

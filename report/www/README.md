@@ -1,4 +1,4 @@
-# dashlord report website
+# Dashlord report website
 
 This is a Next.js static website that produces the DashLord report based on some input data.
 

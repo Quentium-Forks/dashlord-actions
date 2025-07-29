@@ -1,4 +1,5 @@
 name: "Trivy GHCR scan action"
+
 description: "Generate a trivy report on your GHCR images"
 
 inputs:
@@ -8,6 +9,7 @@ inputs:
     default: socialgouv/sample-next-app
   output:
     description: "Path to output file. defaults to trivy.json"
+    required: true
     default: "trivy.json"
 
 runs:
@@ -18,9 +20,10 @@ runs:
       run: |
         cd ${{ github.action_path }}
         yarn
+
     - name: Get packages
       shell: bash
       id: scan
       run: |
         cd ${{ github.action_path }}
-        yarn -s scan ${{ inputs.repos }} > ${{ github.workspace }}/${{ inputs.output }}
+        yarn -s scan "${{ inputs.repos }}" > ${{ github.workspace }}/${{ inputs.output }}

@@ -2,7 +2,7 @@ const fs = require("fs");
 const core = require("@actions/core");
 const YAML = require("yaml");
 
-const getDashlordConfig = () => {
+const getDashLordConfig = () => {
   let dashlordConfig;
   if (fs.existsSync("./dashlord.yml")) {
     core.info("----");
@@ -26,7 +26,7 @@ const getDashlordConfig = () => {
 const getSiteTools = (site) => {
   core.info(`site=${JSON.stringify(site)}`);
   core.info(`site.tools=${JSON.stringify(site.tools)}`);
-  let dashlordConfig = getDashlordConfig();
+  let dashlordConfig = getDashLordConfig();
   if (!dashlordConfig.tools) {
     return {};
   }
@@ -74,7 +74,7 @@ const getOutputs = () => {
   core.info(`toolInput: ${toolInput}`);
 
   const isValid = (u) => u.url.match(/^https?:\/\//);
-  let dashlordConfig = getDashlordConfig();
+  let dashlordConfig = getDashLordConfig();
   let baseSites = dashlordConfig.urls;
 
   if (!baseSites && urlsInput) baseSites = urlsInput.map((url) => ({ url }));
@@ -130,7 +130,7 @@ if (require.main === module) {
 module.exports = {
   run,
   getOutputs,
-  getDashlordConfig,
+  getDashLordConfig,
   getSiteTools,
   getSiteSubpages,
 };

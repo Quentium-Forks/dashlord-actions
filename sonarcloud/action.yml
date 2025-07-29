@@ -1,4 +1,5 @@
-name: "DashLord sonarcloud Action"
+name: "SonarCloud data extraction action"
+
 description: "Extract data from sonarcloud API"
 
 inputs:
@@ -7,6 +8,7 @@ inputs:
     required: true
   output:
     description: "Path to output file. defaults to sonarcloud.json"
+    required: true
     default: "sonarcloud.json"
 
 runs:
@@ -14,14 +16,16 @@ runs:
   steps:
     - uses: actions/setup-node@v3
       with:
-        node-version: "18"
+        node-version: "22"
+
     - name: Install
       shell: bash
       run: |
         cd ${{ github.action_path }}
         yarn
+
     - name: Fetch data
       shell: bash
       run: |
         cd ${{ github.action_path }}
-        yarn -s fetch "${{ inputs.repos }}" > "${{ github.workspace }}/${{ inputs.output }}"
+        yarn -s fetch "${{ inputs.repos }}" > ${{ github.workspace }}/${{ inputs.output }}

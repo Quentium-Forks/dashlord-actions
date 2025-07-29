@@ -1,3 +1,5 @@
+name: Test init JS
+
 on:
   push:
     branches: ["*"]
@@ -10,14 +12,16 @@ on:
       - init/**
       - .github/workflows/init.yml
 
-name: Test init JS
 jobs:
   tests:
     runs-on: ubuntu-latest
     name: Test sh
     steps:
-      - uses: actions/checkout@v3
-      - run: |
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - shell: bash
+        run: |
           cd init
-          npm i
-          npm test
+          yarn
+          yarn test

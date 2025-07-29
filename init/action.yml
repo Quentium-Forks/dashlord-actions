@@ -1,5 +1,7 @@
 name: "DashLord init action"
+
 description: "Parse dashlord config files"
+
 inputs:
   url:
     description: "Single url to scan or scan all urls"
@@ -7,8 +9,9 @@ inputs:
     default: ""
   tool:
     description: "Tool to run or use all tools"
-    default: ""
     required: false
+    default: ""
+
 outputs:
   urls:
     description: List of urls to scan as plain text
@@ -21,5 +24,15 @@ outputs:
     value: ${{ steps.init.outputs.config }}
 
 runs:
-  using: "node20"
-  main: "dist/index.js"
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v3
+      with:
+        node-version: "22"
+
+    - shell: bash
+      id: init
+      run: |
+        cd ${{ github.action_path }}
+        yarn
+        node ${{ github.action_path }}/src/index.js

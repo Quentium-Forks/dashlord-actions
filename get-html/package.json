@@ -12,7 +12,7 @@
   "main": "src/index.js",
   "license": "Apache-2.0",
   "dependencies": {
-    "puppeteer": "^15.5.0"
+    "puppeteer": "^24.15.0"
   },
   "publishConfig": {
     "access": "public"

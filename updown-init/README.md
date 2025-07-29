@@ -1,4 +1,4 @@
-# socialgouv/dashlord-actions/updown-init <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/License-Apache--2.0-yellow.svg" alt="License: Apache-2.0"></a>
+# DashLord Actions - updown-init
 
 Create missing [updown.io](https://updown.io) entries from a local `dashlord.yaml` config file
 
@@ -15,14 +15,18 @@ console.log(
 );
 ```
 
-### github-action
+## Usage
 
 ```yaml
 jobs:
   html:
+    name: Create updown.io checks
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3 # get the dashlord.yml
-      - uses: "socialgouv/dashlord-actions/updown-init@v1"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - uses: SocialGouv/dashlord-actions/updown-init@v1
         env:
           UPDOWNIO_API_KEY: ${{ secrets.UPDOWNIO_API_KEY }} # write-enabled updown.io token
 ```

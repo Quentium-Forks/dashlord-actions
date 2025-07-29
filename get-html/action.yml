@@ -1,29 +1,31 @@
 name: "Get URL HTML action"
-description: "Get some URL HTML"
+
+description: "Get HTML content from a URL"
 
 inputs:
   url:
     description: URL to read HTML
     required: true
   output:
-    description: Path to output file
-    default: result.html
-    required: false
+    description: "Path to output file. defaults to result.html"
+    required: true
+    default: "result.html"
   language:
     description: Default environment LANGUAGE
-    default: fr
     required: false
+    default: fr
 
 runs:
   using: "composite"
   steps:
     - uses: actions/setup-node@v3
       with:
-        node-version: "14"
+        node-version: "22"
+
     - shell: bash
       id: fetch
       run: |
         cd ${{ github.action_path }}
         yarn
         export LANGUAGE="${{ inputs.language }}"
-        ./bin/index.js ${{ inputs.url }} > ${{ github.workspace }}/${{ inputs.output }}
+        node ${{ github.action_path }}/bin/index.js ${{ inputs.url }} > ${{ github.workspace }}/${{ inputs.output }}

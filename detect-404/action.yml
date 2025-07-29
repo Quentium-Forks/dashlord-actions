@@ -1,0 +1,27 @@
+name: "Detect 404 action"
+
+description: "Detect 404s on some URL"
+
+inputs:
+  url:
+    description: URL to check
+    required: true
+  output:
+    description: "Path to output file. defaults to detect-404.json"
+    required: true
+    default: "detect-404.json"
+  depth:
+    description: wget spider depth
+    required: false
+    default: "10"
+
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: |
+        # ensure wget output is parsable
+        export LANG=en_GB.UTF-8 
+
+        # wget return error exit code when errors founds, prevent action failure with `|| true`
+        wget --level=${{ inputs.depth }} --spider --recursive 2>&1 >/dev/null ${{ inputs.url }} | npx wget-parser > ${{ inputs.output }} || true

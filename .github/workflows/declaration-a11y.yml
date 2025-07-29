@@ -1,35 +1,42 @@
+name: Tests declaration-a11y action
+
 on:
   push:
     branches: ["*"]
     paths:
-      - declaration-a11y
+      - declaration-a11y/**
       - .github/workflows/declaration-a11y.yml
-
   pull_request:
     branches: ["*"]
     paths:
-      - declaration-a11y
+      - declaration-a11y/**
       - .github/workflows/declaration-a11y.yml
 
-name: Test declaration-a11y
 jobs:
   tests:
     runs-on: ubuntu-latest
     name: Test
     steps:
-      - uses: actions/checkout@v3
-      - run: |
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - shell: bash
+        run: |
           cd declaration-a11y
           yarn
           yarn test
-  tests-action:
+
+  tests-declaration-a11y:
     runs-on: ubuntu-latest
     name: declaration-a11y action
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - shell: bash
         run: |
           ls -la
+
       - uses: ./declaration-a11y
         with:
           url: https://labonnealternance.apprentissage.beta.gouv.fr

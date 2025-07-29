@@ -1,4 +1,5 @@
 name: "DashLord save action"
+
 description: "Save dashlord results"
 
 inputs:
@@ -9,9 +10,6 @@ inputs:
     description: Cleanup previous data
     required: false
     default: "true"
-#
-# this actions copy scanners results to the dashlord repository for versionning
-#
 
 runs:
   using: "composite"

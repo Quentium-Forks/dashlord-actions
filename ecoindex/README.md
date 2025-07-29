@@ -1,14 +1,16 @@
-# dashlord-actions/ecoindex
+# DashLord Actions - ecoindex
 
-Caclule l'eco index d'un URL : http://www.ecoindex.fr/quest-ce-que-ecoindex/
+Caclulate the Ecoindex score for a URL: https://www.ecoindex.fr/ecoconception/
 
 ## Usage
 
 ```yaml
 jobs:
   scans:
+    name: Ecoindex Scan
+    runs-on: ubuntu-latest
     steps:
-      - uses: "socialgouv/dashlord-actions/ecoindex@v1"
+      - uses: SocialGouv/dashlord-actions/ecoindex@v1
         with:
           url: ${{ matrix.url }}
           output: scans/ecoindex.json

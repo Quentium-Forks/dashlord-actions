@@ -1,3 +1,5 @@
+name: Test get-html action
+
 on:
   push:
     branches: ["*"]
@@ -10,29 +12,34 @@ on:
       - get-html/**
       - .github/workflows/get-html.yml
 
-name: Test get-html action
 jobs:
-  tests-report:
+  tests-get-html:
     runs-on: ubuntu-latest
     name: get-html action
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - shell: bash
         run: |
           ls -la
+
       - uses: ./get-html
         name: test some URL
         with:
           url: https://opentermsarchive.org
           output: result.html
+
       - shell: bash
         run: |
           cat result.html | grep Accessibilité
+
       - uses: ./get-html
         name: test user-agent
         with:
           url: https://httpbin.org/user-agent
           output: user-agent.html
+
       - shell: bash
         run: |
           cat user-agent.html | grep dashlord

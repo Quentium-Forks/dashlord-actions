@@ -1,3 +1,5 @@
+name: Tests lhci action
+
 on:
   push:
     branches: ["*"]
@@ -10,22 +12,25 @@ on:
       - lhci/**
       - .github/workflows/lhci.yml
 
-name: Test lhci action
 jobs:
-  tests-report:
+  tests-lhci:
     runs-on: ubuntu-latest
     name: lhci action
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - uses: ./lhci
         with:
           url: https://opentermsarchive.org,https://domifa.fabrique.social.gouv.fr
           language: fr
+
       - shell: bash
         name: test url with french redirection
         run: |
           ls .lighthouseci
           cat .lighthouseci/*.json | grep '"finalUrl": "https://opentermsarchive.org/fr/"'
+
       - shell: bash
         name: test second URL
         run: |

@@ -1,4 +1,4 @@
-const { analyseFile, analyseDom } = require("..");
+const { analyseFile, analyseDom } = require("../src/index");
 const fs = require("fs");
 const { JSDOM } = require("jsdom");
 

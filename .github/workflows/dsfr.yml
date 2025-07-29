@@ -1,3 +1,5 @@
+name: Tests dsfr action
+
 on:
   push:
     branches: ["*"]
@@ -10,7 +12,6 @@ on:
       - dsfr/**
       - .github/workflows/dsfr.yml
 
-name: Tests dsfr action
 jobs:
   tests-dsfr-valid:
     runs-on: ubuntu-latest
@@ -26,15 +27,19 @@ jobs:
           - name: beta
             url: "https://beta.gouv.fr"
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Test DSFR detection on ${{ matrix.item.name }}
         uses: ./dsfr
         with:
           url: ${{ matrix.item.url }}
           output: ${{ matrix.item.name }}.json
+
       - shell: bash
         run: |
           grep "\"detected\": true" < ${{ matrix.item.name }}.json
+
   tests-dsfr-invalid:
     runs-on: ubuntu-latest
     name: dsfr invalid
@@ -47,12 +52,15 @@ jobs:
           - name: mes-evenements
             url: "https://mesevenementsemploi.pole-emploi.fr/"
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Test DSFR detection on ${{ matrix.item.name }}
         uses: ./dsfr
         with:
           url: ${{ matrix.item.url }}
           output: ${{ matrix.item.name }}.json
+
       - shell: bash
         run: |
           grep "\"detected\": false" < ${{ matrix.item.name }}.json

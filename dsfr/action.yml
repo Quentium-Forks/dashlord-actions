@@ -1,36 +1,35 @@
 name: "DSFR detection action"
-description: "Detect official DS fr theme"
+
+description: "Detect official DSFR usage"
 
 inputs:
   url:
     description: URL to read
     required: true
   output:
-    description: Path to output file
-    default: scans/dsfr.json
-    required: false
+    description: "Path to output file. defaults to dsfr.json"
+    required: true
+    default: "dsfr.json"
 
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-node@v3
-      with:
-        node-version: "20"
     - name: Get URL HTML
-      uses: socialgouv/dashlord-actions/get-html@v1
+      uses: ./get-html
       with:
         url: ${{ inputs.url }}
         output: dsfr-html.html
+
     - shell: bash
       run: |
-        # this exits 1 when no fr-header__brand or rf-header__brand
         set +e
+
+        # this exits 1 when no fr-header__brand or rf-header__brand
         grep -q "\(rf\|fr\)-header__brand" < ./dsfr-html.html
-        if [ $? -eq 0 ]
-        then
-            JSON="{\"detected\": true}"
+        if [ $? -eq 0 ]; then
+          JSON="{\"detected\": true}"
         else
-            JSON="{\"detected\": false}"
+          JSON="{\"detected\": false}"
         fi
 
         echo "$JSON" > ${{ github.workspace }}/${{ inputs.output }}

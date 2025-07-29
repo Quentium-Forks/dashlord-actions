@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const { analyseFile } = require("../index");
+const { analyseFile } = require("../src/index");
 
 const files = fs.readdirSync(path.join(__dirname, "samples"));
 

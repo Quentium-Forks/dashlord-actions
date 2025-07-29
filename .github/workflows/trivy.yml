@@ -1,3 +1,5 @@
+name: Tests trivy action
+
 on:
   push:
     branches: ["*"]
@@ -10,18 +12,20 @@ on:
       - trivy/**
       - .github/workflows/trivy.yml
 
-name: Tests trivy action
 jobs:
   tests-trivy:
     runs-on: ubuntu-latest
     name: trivy action
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Run Trivy vulnerability scanner
         uses: ./trivy
         with:
           images: ghcr.io/socialgouv/domifa/backend,ghcr.io/socialgouv/domifa/frontend
           output: trivy-results.json
+
       - shell: bash
         run: |
           python -m json.tool < trivy-results.json

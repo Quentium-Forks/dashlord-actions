@@ -1,4 +1,4 @@
-# socialgouv/dashlord-actions/report
+# Dashlord Actions - report
 
 This GitHub action build a web report based on some [dashlord](https://github.com/socialgouv/dashlord) content.
 
@@ -17,9 +17,10 @@ on:
 
 jobs:
   build:
+    name: Build DashLord report
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - id: dashlord-report
         uses: SocialGouv/dashlord-actions/report@v1

@@ -1,34 +1,32 @@
-name: "Checks URL status"
-description: "Checks page status from url"
-branding:
-  icon: "activity"
-  color: "green"
+name: "Check URL status action"
+
+description: "Check page status from url"
+
 inputs:
   url:
     description: "The URL to check"
     required: true
   output:
-    description: "Filename for stats reports"
+    description: "Path to output file. defaults to url_status.json"
+    required: true
     default: "url_status.json"
-    required: false
 
 runs:
   using: "composite"
   steps:
     - shell: bash
-      env:
-        INPUT_URL: ${{ inputs.url}}
-        INPUT_OUTPUT: ${{ inputs.output}}
       run: |
         set +e
 
         echo "testing URL $1"
 
-        wget -q -S --no-check-certificate --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36 - dashlord" "${INPUT_URL}"
+        wget -q -S --no-check-certificate --user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0 - dashlord" "${{ inputs.url }}"
 
         if ! [ "$?" -ne 0 ];
         then
-            echo '{ "grade": "A" }' > ${INPUT_OUTPUT}
+          JSON="{\"grade\": \"A\"}"
         else
-            echo '{ "grade": "F" }' > ${INPUT_OUTPUT}
+          JSON="{\"grade\": \"F\"}"
         fi
+
+        echo "$JSON" > ${{ github.workspace }}/${{ inputs.output }}

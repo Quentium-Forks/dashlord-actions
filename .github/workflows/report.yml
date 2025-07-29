@@ -1,3 +1,5 @@
+name: Tests report action
+
 on:
   push:
     branches: ["*"]
@@ -10,21 +12,24 @@ on:
       - report/**
       - .github/workflows/report.yml
 
-name: Tests report action
 jobs:
   tests-report:
     runs-on: ubuntu-latest
     name: report action
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - uses: actions/setup-node@v3
         with:
-          node-version: "20"
+          node-version: "22"
+
       - shell: bash
         run: |
           cd report
           yarn
           yarn test
+
       - shell: bash
         run: |
           cd report/www

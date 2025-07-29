@@ -1,5 +1,7 @@
-name: "DashLord init action"
+name: "DashLord init from txt action"
+
 description: "Parse dashlord txt config files and return some urls to scan"
+
 inputs:
   cachePath:
     description: "Where urls results are stored"
@@ -13,6 +15,7 @@ inputs:
     description: "Path to the txt urls list file"
     required: false
     default: "urls.txt"
+
 outputs:
   sites:
     description: List of urls to scan as plain text
@@ -21,7 +24,8 @@ outputs:
 runs:
   using: composite
   steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
 
@@ -34,9 +38,9 @@ runs:
       shell: bash
       id: init
       env:
-        CACHE_PATH: ${{ inputs.cachePath || './results' }}
-        TXT_PATH: ${{ inputs.txtPath || 'xxx.txt' }}
-        MATRIX_MAX_COUNT: ${{ inputs.count || 10 }}
+        CACHE_PATH: ${{ inputs.cachePath }}
+        TXT_PATH: ${{ inputs.txtPath }}
+        MATRIX_MAX_COUNT: ${{ inputs.count }}
       run: |
         # Create a Python script to process URLs
         cat << 'EOF' > process_urls.py

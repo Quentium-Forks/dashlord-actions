@@ -1,4 +1,4 @@
-# socialgouv/dashlord-actions/init
+# DashLord Actions - init
 
 Parse a `dashlord.yaml` or `urls.txt` file to generate a list of urls to use in a GitHub action jobs matrix.
 
@@ -9,16 +9,20 @@ See how `needs.init.outputs.sites` is used in the matrix definition
 ```yaml
 jobs:
   init:
+    name: Initialize sites
     runs-on: ubuntu-latest
     outputs:
       sites: ${{ steps.init.outputs.sites }}
       config: ${{ steps.init.outputs.config }}
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - id: init
-        uses: "socialgouv/dashlord-actions/init@main"
+        uses: SocialGouv/dashlord-actions/init@v1
 
   scans:
+    name: Run scans
     runs-on: ubuntu-latest
     needs: init
     strategy:
@@ -27,20 +31,19 @@ jobs:
       matrix:
         sites: ${{ fromJson(needs.init.outputs.sites) }}
     steps:
-      # example steps
       - name: Mozilla HTTP Observatory
         if: ${{ matrix.sites.tools.httpobs }}
         continue-on-error: true
         timeout-minutes: 15
         uses: SocialGouv/httpobs-action@master
         with:
-          url: "${{ matrix.sites.url }}"
-          output: "scans/http.json"
+          url: ${{ matrix.sites.url }}
+          output: scans/http.json
 ```
 
 ### Expected dashlord.yaml
 
-```yml
+```yaml
 title: Test 1
 tools:
   screenshot: true
@@ -79,6 +82,6 @@ urls:
 
 ```shell
 cd init/
-npm run all
-npm test -- -u # update jest snapshots
+yarn all
+yarn test -u # update jest snapshots
 ```

@@ -1,22 +1,28 @@
-# dashlord-actions
+# DashLord Actions
 
-Basic GitHub actions used in [dashlord](https://github.com/socialgouv/dashlord) workflows.
+Basic GitHub Actions used in [dashlord](https://github.com/socialgouv/dashlord) workflows.
 
-## Actions
+## Available actions
 
-| Action           | Usage                                             |
-| ---------------- | ------------------------------------------------- |
-| check-url        | Check the existence of given URL                  |
-| declaration-a11y | verif mention accessibilité                       |
-| declaration-rgpd | check mentions légales, CGU, et confidentialité   |
-| ecoindex         | Compute webpage ecoscore with green-it            |
-| get-html         | get raw HTML of any webpage                       |
-| init             | read dashloard.yml                                |
-| lhci             | LightHouse collector action                       |
-| report           | build a report.json and website from latest scans |
-| save             | save a single url scan result for dashlord        |
-| sonarcloud       | Extract quality metrics from sonarcloud API       |
-| trivy            | Run trivy docker images scanner                   |
+| Action           | Usage                                               |
+|------------------|-----------------------------------------------------|
+| check-url        | Check the existence of given URL                    |
+| declaration-a11y | Verify accessibility mention                        |
+| declaration-rgpd | Check legal mentions, GCU, confidentiality policy   |
+| check-404        | Check 404 on some URL                               |
+| dsfr             | Check if DSFR is used                               |
+| ecoindex         | Compute webpage ecoscore with ecoindex-cli          |
+| get-html         | Get raw HTML of any webpage                         |
+| init             | Read dashloard.yml                                  |
+| init-from-txt    | Read multiple URLs from a text file                 |
+| lhci             | Collect LightHouse information                      |
+| report           | Build a report.json and a website from latest scans |
+| save             | Save a single url scan result for dashlord          |
+| sonarcloud       | Extract quality metrics from sonarcloud API         |
+| tracking         | Check the tracking service                          |
+| trivy            | Run trivy docker images scanner                     |
+| trivy-ghcr       | Run trivy docker images scanner                     |
+| updown-init      | Create missing entries in updown.io                 |
 
 And many more !
 
@@ -55,7 +61,7 @@ node report/src # this will create fresh config.json, report.json and trends.jso
 
 See also the [report README](./report/README.md)
 
-### Add a new dashlord action
+### Add a new DashLord action
 
 1. create a GitHub action that can produce some JSON in your `scans/myaction.json`
 2. In `report/src/generateUrlReport`, import the minimum from your action JSON to serve it to the frontend via the generated `report.json`

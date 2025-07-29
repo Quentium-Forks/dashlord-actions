@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { getHTML } = require("../src");
+const { getHTML } = require("../src/index");
 
 const url = process.argv[process.argv.length - 1];
 
