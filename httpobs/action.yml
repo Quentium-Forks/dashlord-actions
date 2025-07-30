@@ -1,0 +1,40 @@
+name: "Run Mozilla HTTP Observatory scan"
+
+description: "Run a scan on https://observatory.mozilla.org API"
+
+inputs:
+  url:
+    description: URL to scan
+    required: true
+  output:
+    description: "Path to output file. defaults to httpobs.json"
+    required: true
+    default: "httpobs.json"
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: "22"
+
+    - shell: bash
+      run: |
+        set +e
+
+        remove_url_prefix() {
+          local url="$1"
+          url="${url#http://}"
+          url="${url#https://}"
+          echo "$url"
+        }
+
+        HOST=$(remove_url_prefix ${{ inputs.url }})
+
+        echo "testing HOST $HOST"
+
+        export RETRIEVER_USER_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0 - dashlord",
+
+        npx @mdn/mdn-http-observatory "$HOST" > ${{ github.workspace }}/${{ inputs.output }}
+
+        cat ${{ github.workspace }}/${{ inputs.output }} | jq ".scan.grade"

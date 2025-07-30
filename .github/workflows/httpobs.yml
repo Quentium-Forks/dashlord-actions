@@ -1,0 +1,31 @@
+name: Tests httpobs action
+
+on:
+  push:
+    branches: ["*"]
+    paths:
+      - httpobs/**
+      - .github/workflows/httpobs.yml
+  pull_request:
+    branches: ["*"]
+    paths:
+      - httpobs/**
+      - .github/workflows/httpobs.yml
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: httpobs action
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run on www.free.fr
+        uses: ./httpobs
+        with:
+          url: https://www.free.fr
+          output: results.json
+
+      - shell: bash
+        run: |
+          cat results.json | jq ".scan.grade"
