@@ -7,13 +7,18 @@ const sampleConfig = jest
   .readFileSync(path.join(__dirname, "..", "dashlord.yml"))
   .toString();
 
-jest.mock("fs", () => ({
-  promises: {
-    access: jest.fn(),
-  },
-  existsSync: jest.fn(),
-  readFileSync: jest.fn(),
-}));
+jest.mock("fs", () => {
+  const actualFs = jest.requireActual("fs");
+  return {
+    ...actualFs,
+    promises: {
+      access: jest.fn(),
+    },
+    existsSync: jest.fn(),
+    readFileSync: jest.fn(),
+    constants: actualFs.constants, // preserve constants like O_RDONLY
+  };
+});
 
 const { getOutputs, getSiteTools, getSiteSubpages } = require("./index");
 
