@@ -34,7 +34,6 @@ const zapCleanup = (result) =>
   result && {
     ...result,
     site:
-      result &&
       result.site &&
       result.site.map &&
       result.site.map((site) => {

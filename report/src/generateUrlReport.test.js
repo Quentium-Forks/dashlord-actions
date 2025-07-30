@@ -142,7 +142,7 @@ describe("generateUrlReport", () => {
     unMockJson("lhr.json");
     unMockJson("lhr-dsfsdfqdf.json");
     unMockJson("nmapvuln.json");
-    unMockJson("nuclei.json", []);
+    unMockJson("nuclei.json");
     unMockJson("testssl.json");
     unMockJson("thirdparties.json");
     unMockJson("updownio.json");
