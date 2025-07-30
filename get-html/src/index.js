@@ -17,8 +17,8 @@ const getHTML = async (url) => {
     const page = await browser.newPage();
     await page.setUserAgent(`${userAgent} - dashlord`);
     await page.goto(url);
-    await page.waitForTimeout(5000); // wait some time, some SPA may load asynchronously (ex: angular)
-    const frame = await page.mainFrame();
+    await page.waitForSelector("body", { timeout: 5000 });
+    const frame = page.mainFrame();
     html = await frame.content();
   } catch (e) {
     console.error("error", e);
