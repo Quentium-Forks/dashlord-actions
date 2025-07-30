@@ -17,7 +17,7 @@ module.exports = fetchReposPackages;
 
 if (require.main === module) {
   const repos = process.argv[process.argv.length - 1];
-  if (repos.match(/^([^/]+\/[^/]+,?)+$/)) {
+  if (repos.match(/^([^/]+\/[^/]+)(,[^/]+\/[^/]+)*$/)) {
     fetchReposPackages(repos.split(",")).then((packages) =>
       console.log(JSON.stringify(packages, null, 2))
     );
