@@ -297,7 +297,7 @@ export const Url: React.FC<UrlDetailProps> = ({
           isDefault: isSelected,
         };
       }),
-    [selectedTab, url]
+    [selectedTab, report, url]
   );
 
   if (!report) {

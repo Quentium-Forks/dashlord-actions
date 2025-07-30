@@ -11,6 +11,7 @@ import CallOut from "@codegouvfr/react-dsfr/CallOut";
 import styles from "./url.module.scss";
 import { btoa, isToolEnabled } from "../utils";
 import config from "@/config.json";
+import Image from 'next/image';
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -110,7 +111,7 @@ export const UrlHeader = ({
         )}
       </div>
       {isToolEnabled("screenshot", report.url) && report.screenshot && (
-        <img
+        <Image
           className={styles.screenshotImg}
           alt={`Copie d'écran de ${url}`}
           src={`${BASE_PATH}/report/${btoa(url)}/screenshot.jpeg`}

@@ -58,81 +58,77 @@ const MAX_ROWS = 10;
 
 export const Trivy: React.FC<TrivyProps> = ({ data, url }) => {
   return (
-    <>
-      {(data.length > 0 &&
-        data
-          .filter((image) => image && image.ArtifactName)
-          .map((image) => {
-            const vulnsCount =
-              (image.Results &&
-                image.Results.length &&
-                image.Results.map(
-                  (r) => (r.Vulnerabilities && r.Vulnerabilities.length) || 0
-                ).reduce((t, c) => t + c, 0)) ||
-              0;
+    (data.length > 0 &&
+      data
+        .filter((image) => image && image.ArtifactName)
+        .map((image) => {
+          const vulnsCount =
+            (image.Results &&
+              image.Results.length &&
+              image.Results.map(
+                (r) => (r.Vulnerabilities && r.Vulnerabilities.length) || 0
+              ).reduce((t, c) => t + c, 0)) ||
+            0;
 
-            return (
-              (
-                <Panel
-                  key={image.ArtifactName}
-                  isExternal
-                  title={`Image docker ${image.ArtifactName} (${vulnsCount})`}
-                  info="Scan de vulnérabilités Trivy"
-                  url={url}
-                  urlText="Rapport détaillé"
-                >
-                  <h5>{image.Target}</h5>
-                  {vulnsCount ? (
-                    image.Results.map((result) => {
-                      if (
-                        result.Vulnerabilities &&
-                        result.Vulnerabilities.length
-                      ) {
-                        const vulns = result.Vulnerabilities?.sort(
-                          orderBySeverity
-                        )
-                          .filter(filterByKey("VulnerabilityID"))
-                          .slice(0, MAX_ROWS);
-                        const tableData = [
-                          columns.map((col) => col.name),
-                          ...vulns.map((vuln) => {
-                            return columns.map((col) =>
-                              col.render ? col.render(vuln) : vuln[col.name]
-                            );
-                          }),
-                        ];
-                        return (
-                          <div key={result.Target}>
-                            <h6>
-                              {result.Target} ({result.Type})
-                            </h6>
-                            {result.Vulnerabilities.length > MAX_ROWS && (
-                              <Alert
-                                severity="error"
-                                title=""
-                                description={`Plus de ${MAX_ROWS} vulnérabilités détectées, vérifiez le rapport Trivy`}
-                              />
-                            )}
-                            <Table data={tableData} />
-                            <br />
-                            <br />
-                            <hr />
-                          </div>
+          return (
+            <Panel
+              key={image.ArtifactName}
+              isExternal
+              title={`Image docker ${image.ArtifactName} (${vulnsCount})`}
+              info="Scan de vulnérabilités Trivy"
+              url={url}
+              urlText="Rapport détaillé"
+            >
+              <h5>{image.Target}</h5>
+              {vulnsCount ? (
+                image.Results.map((result) => {
+                  if (
+                    result.Vulnerabilities &&
+                    result.Vulnerabilities.length
+                  ) {
+                    const vulns = result.Vulnerabilities?.sort(
+                      orderBySeverity
+                    )
+                      .filter(filterByKey("VulnerabilityID"))
+                      .slice(0, MAX_ROWS);
+                    const tableData = [
+                      columns.map((col) => col.name),
+                      ...vulns.map((vuln) => {
+                        return columns.map((col) =>
+                          col.render ? col.render(vuln) : vuln[col.name]
                         );
-                      }
-                    })
-                  ) : (
-                    <Alert
-                      severity="success"
-                      title=""
-                      description="Aucune vulnérabilité détectée par Trivy"
-                    />
-                  )}
-                </Panel>
-              ) || null
-            );
-          })) ||
-        null}
-    </>
+                      }),
+                    ];
+                    return (
+                      <div key={result.Target}>
+                        <h6>
+                          {result.Target} ({result.Type})
+                        </h6>
+                        {result.Vulnerabilities.length > MAX_ROWS && (
+                          <Alert
+                            severity="error"
+                            title=""
+                            description={`Plus de ${MAX_ROWS} vulnérabilités détectées, vérifiez le rapport Trivy`}
+                          />
+                        )}
+                        <Table data={tableData} />
+                        <br />
+                        <br />
+                        <hr />
+                      </div>
+                    );
+                  }
+                })
+              ) : (
+                <Alert
+                  severity="success"
+                  title=""
+                  description="Aucune vulnérabilité détectée par Trivy"
+                />
+              )}
+            </Panel>
+          );
+        })) ||
+    null
   );
 };
