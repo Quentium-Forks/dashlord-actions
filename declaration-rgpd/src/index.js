@@ -1,7 +1,6 @@
 const jsdom = require("jsdom");
-const fs = require("fs");
 const { fuzzy } = require("fast-fuzzy");
-const { execSync } = require("child_process");
+// const { execSync } = require("child_process");
 
 const { JSDOM } = jsdom;
 
@@ -78,21 +77,21 @@ const getDeclarationUrl = (dom, bestMatch, url) => {
   return declarationUrl;
 };
 
-const analyseDeclaration = (result, search, thirdPartiesJson) => {
+const analyseDeclaration = (dom, result, search, thirdPartiesJson) => {
   // get declaration HTML
   if (result.declarationUrl.toLowerCase().match(/\.pdf$/)) {
     // todo: handle PDF
     return result;
   }
-  let htmlOutput;
-  try {
-    htmlOutput = execSync(
-      `LANGUAGE=fr npx @socialgouv/get-html ${result.declarationUrl}`
-    );
-  } catch (e) {
-    console.error(`Error: get-html failed for ${result.declarationUrl}`);
-    return result;
-  }
+  let htmlOutput = dom.serialize();
+  // try {
+  //   htmlOutput = execSync(
+  //     `LANGUAGE=fr npx @socialgouv/get-html ${result.declarationUrl}`
+  //   );
+  // } catch (e) {
+  //   console.error(`Error: get-html failed for ${result.declarationUrl}`);
+  //   return result;
+  // }
   const htmlString = htmlOutput.toString().toUpperCase();
   result.maxScore = search.mustMatch.length;
 
@@ -156,7 +155,7 @@ const analyseDom = async (
         } catch (e) {
           console.error("Cannot parse thirdparties JSON", e);
         }
-        result = analyseDeclaration(result, search, thirdPartiesJson);
+        result = analyseDeclaration(dom, result, search, thirdPartiesJson);
       }
     }
     return result;
@@ -164,8 +163,7 @@ const analyseDom = async (
 };
 
 const analyseFile = async (filePath, { url, thirdPartiesOutput } = {}) => {
-  const html = fs.readFileSync(filePath).toString();
-  const dom = await new JSDOM(html);
+  const dom = await JSDOM.fromFile(filePath);
   return analyseDom(dom, { url, thirdPartiesOutput });
 };
 
