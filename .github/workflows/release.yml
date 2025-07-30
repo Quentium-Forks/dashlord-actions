@@ -20,7 +20,6 @@ jobs:
 
       - name: Get GitHub App Token
         id: token
-        continue-on-error: true
         uses: SocialGouv/token-bureau@main
         with:
           token-bureau-url: https://token-bureau.fabrique.social.gouv.fr
