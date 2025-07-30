@@ -81,7 +81,7 @@ module.exports = generateJson;
 
 if (require.main === module) {
   const repos = process.argv[process.argv.length - 1];
-  if (repos.match(/^([^/]+\/[^/]+,?)+$/)) {
+  if (repos.match(/^([^\s/,]+\/[^\s/,]+,?)+$/)) {
     generateJson(repos.split(",").map((repo) => repo.trim())).then((results) =>
       console.log(JSON.stringify(results, null, 2))
     );
