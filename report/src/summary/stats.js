@@ -4,7 +4,7 @@ const summary = (report) => {
     const statsGrade = report.grade;
     if (statsGrade) {
       return {
-        statsGrade
+        statsGrade,
       };
     }
   }

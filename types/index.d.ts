@@ -353,6 +353,8 @@ type Wget404Report = { link: string; }[];
 
 type DsFrReport = { detected: boolean; };
 
+type TrackingReport = { service: string; };
+
 type UrlReport = UrlConfig & {
   404?: Wget404Report | null;
   betagouv?: BetagouvReport;

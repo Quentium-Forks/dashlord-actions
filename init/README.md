@@ -46,7 +46,7 @@ jobs:
 ```yaml
 title: Test 1
 tools:
-  404: true
+  "404": true
   budget_page: true
   codescan: true
   dependabot: true

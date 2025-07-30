@@ -204,6 +204,16 @@ page_budget:
 
   info: |
 
+tracking:
+  label: Service de tracking
+  tags:
+    - tracking
+  description: |
+    Détecte le service de tracking utilisé par le site web.
+  warning: |
+
+  info: |
+
 trivy:
   label: Vulnérabilités Trivy
   url: https://aquasecurity.github.io/trivy/

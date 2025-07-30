@@ -1,201 +1,210 @@
 {
+  "404": {
+    "description": "Détecte les erreurs 404 sur un site web.\n",
+    "info": "",
+    "label": "Erreurs 404",
+    "tags": [
+      "standards-betagouv"
+    ],
+    "warning": ""
+  },
+  "codescan": {
+    "description": "Recense les potentielles vulnérabilités dans le code source.\n\n - Analyse statique du code sur le dépôt Github du code\n - Possibilité de configurer dans le repository\n",
+    "info": "Nécessite d'avoir activé CodeQL sur les repository GitHub et indiqué le champ `repositories` dans `dashlord.yaml`.\n",
+    "label": "CodeQL",
+    "tags": [
+      "security"
+    ],
+    "url": "https://docs.github.com/en/code-security/secure-coding/about-code-scanning",
+    "warning": ""
+  },
+  "declaration-a11y": {
+    "description": "Détection de la mention de déclaration d'accessibilité et de la page liée.\n",
+    "info": "",
+    "label": "Détection de la déclaration d'accessibilité",
+    "tags": [
+      "standards-betagouv"
+    ],
+    "warning": ""
+  },
+  "declaration-rgpd": {
+    "description": "Détection des pages de mentions légales et politique de confidentialité\n",
+    "info": "",
+    "label": "Détection des mentions RGPD",
+    "tags": [
+      "standards-betagouv"
+    ],
+    "warning": ""
+  },
+  "dependabot": {
+    "description": "Scan des vulnérabilités des dépendances sur les dépôts de code GitHub\n\ncf https://docs.github.com/en/code-security/supply-chain-security/about-alerts-for-vulnerable-dependencies\n",
+    "info": "Nécessite d'avoir activé Dependabot sur les repositories GitHub et indiqué le champ `repositories` dans `dashlord.yaml`.\n",
+    "label": "Dependabot",
+    "tags": [
+      "security"
+    ],
+    "url": "https://dependabot.com",
+    "warning": ""
+  },
+  "dsfr": {
+    "description": "Détection du [système de design de l'état](https://www.systeme-de-design.gouv.fr/) avec la balise `fr-header__brand`\n",
+    "info": "",
+    "label": "Détection du système de design de l'état",
+    "tags": [
+      "standards-betagouv"
+    ],
+    "url": "https://www.systeme-de-design.gouv.fr/",
+    "warning": ""
+  },
+  "ecoindex": {
+    "description": "EcoIndex green-it est un outil communautaire, gratuit et transparent qui, pour une URL donnée, permet d’évaluer :\n\n- sa performance environnementale absolue à l’aide d’un score sur 100 (higher is better)\n- sa performance environnementale relative à l’aide d’une note de A à G\n- l’empreinte technique de la page (poids, complexité, etc.)\n- l’empreinte environnementale associée (gaz à effet de serre et eau)\n\nL’objectif d’EcoIndex est d’aider le plus grand nombre à prendre conscience de l’impact environnemental de l’internet.\n",
+    "info": "",
+    "label": "Score eco-index",
+    "tags": [
+      "ecoconception"
+    ],
+    "url": "https://www.ecoindex.fr/comment-ca-marche/",
+    "warning": ""
+  },
+  "http": {
+    "description": "Évalue le niveau de qualité/sécurité de la page web et de son serveur\n\n- Bonnes pratiques de configuration\n- Bonnes pratiques web\n- Solidité des clés de chiffrement\n\nVoir la [méthodologie](https://github.com/mozilla/http-observatory/blob/master/httpobs/docs/scoring.md)\n",
+    "info": "",
+    "label": "Mozilla HTTP observatory",
+    "tags": [
+      "security"
+    ],
+    "url": "https://developer.mozilla.org/fr/observatory",
+    "warning": ""
+  },
   "lighthouse": {
+    "description": "Permet un audit automatique de page web :\n- Performances de chargement\n- Bonnes pratiques SEO (référencement)\n- Bonnes pratiques accessibilité (moteur Axe)\n- Bonnes pratiques web\n",
+    "info": "L'audit complet avec les recommandations de correction est disponible pour chaque URL\n",
     "label": "Google LightHouse",
-    "url": "https://developers.google.com/web/tools/lighthouse",
     "tags": [
       "accessibility",
       "best-practices",
       "seo",
       "performance"
     ],
-    "description": "Permet un audit automatique de page web :\n- Performances de chargement\n- Bonnes pratiques SEO (référencement)\n- Bonnes pratiques accessibilité (moteur Axe)\n- Bonnes pratiques web\n",
-    "warning": "Les mesures de performance sont un instantané, donc pas forcément représentatives.\n\nLes mesures d'accessibilité n'abordent pas du tout [le RGAA](https://accessibilite.numerique.gouv.fr/)\n",
-    "info": "L'audit complet avec les recommandations de correction est disponible pour chaque URL\n"
-  },
-  "dependabot": {
-    "label": "Dependabot",
-    "url": "https://dependabot.com",
-    "tags": [
-      "security"
-    ],
-    "description": "Scan des vulnérabilités des dépendances sur les dépôts de code GitHub\n\ncf https://docs.github.com/en/code-security/supply-chain-security/about-alerts-for-vulnerable-dependencies\n",
-    "warning": "",
-    "info": "Nécessite d'avoir activé Dependabot sur les repositories GitHub et indiqué le champ `repositories` dans `dashlord.yaml`.\n"
-  },
-  "codescan": {
-    "label": "CodeQL",
-    "url": "https://docs.github.com/en/code-security/secure-coding/about-code-scanning",
-    "tags": [
-      "security"
-    ],
-    "description": "Recense les potentielles vulnérabilités dans le code source.\n\n - Analyse statique du code sur le dépôt Github du code\n - Possibilité de configurer dans le repository\n",
-    "warning": "",
-    "info": "Nécessite d'avoir activé CodeQL sur les repository GitHub et indiqué le champ `repositories` dans `dashlord.yaml`.\n"
+    "url": "https://developers.google.com/web/tools/lighthouse",
+    "warning": "Les mesures de performance sont un instantané, donc pas forcément représentatives.\n\nLes mesures d'accessibilité n'abordent pas du tout [le RGAA](https://accessibilite.numerique.gouv.fr/)\n"
   },
   "nmap": {
-    "label": "Nmap",
-    "url": "https://nmap.org",
-    "tags": [
-      "security"
-    ],
     "description": "Nmap scan les vulnérabilités d'une machine (IP) associée à un domaine.\n\nScan des ports ouverts avec vulnérabilités grâce au script [vulners](https://nmap.org/nsedoc/scripts/vulners.html).\n",
-    "warning": "Ce scanner peut exposer des vulnérabilités exploitables.\n",
-    "info": "Nécessite d'avoir activé CodeQL sur les repository GitHub et indiqué le champ `repositories` dans `dashlord.yaml`.\n"
-  },
-  "zap": {
-    "label": "OWASP Zed Attack Proxy",
-    "url": "https://www.zaproxy.org/docs/docker/baseline-scan/",
+    "info": "Nécessite d'avoir activé CodeQL sur les repository GitHub et indiqué le champ `repositories` dans `dashlord.yaml`.\n",
+    "label": "Nmap",
     "tags": [
       "security"
     ],
-    "description": "Scan de vulnérabilités passif ZAP OWASP \"baseline\" qui permet de détecter des risques de sécurité de base.\n",
-    "warning": "",
-    "info": "L'audit complet avec les recommandations de correction est disponible pour chaque URL\n"
-  },
-  "testssl": {
-    "label": "testssl.sh",
-    "url": "https://testssl.sh",
-    "tags": [
-      "security"
-    ],
-    "description": "Évalue le niveau de confiance d'un certificat SSL\n\n- Bonnes pratiques de configuration\n- Protocoles disponibles\n- Compatibilité navigateurs\n- Solidité des clés de chiffrement\n",
-    "warning": "",
-    "info": "L'audit complet avec les recommandations de correction est disponible pour chaque URL\n"
-  },
-  "http": {
-    "label": "Mozilla HTTP observatory",
-    "url": "https://developer.mozilla.org/fr/observatory",
-    "tags": [
-      "security"
-    ],
-    "description": "Évalue le niveau de qualité/sécurité de la page web et de son serveur\n\n- Bonnes pratiques de configuration\n- Bonnes pratiques web\n- Solidité des clés de chiffrement\n\nVoir la [méthodologie](https://github.com/mozilla/http-observatory/blob/master/httpobs/docs/scoring.md)\n",
-    "warning": "",
-    "info": ""
-  },
-  "upwdownio": {
-    "label": "Updown.io",
-    "url": "https://updown.io",
-    "tags": [
-      "performance"
-    ],
-    "description": "Évalue la qualité de service rendue par le serveur\n\n- Temps de réponse\n- Disponibilité\n- Indice de performance : [APDEX](https://updown.uservoice.com/knowledgebase/articles/915588-what-is-apdex)\n- Validité des certificats TLS\n",
-    "warning": "",
-    "info": "Vous devez disposer d'un compte updown.io et d'une clé API\n"
+    "url": "https://nmap.org",
+    "warning": "Ce scanner peut exposer des vulnérabilités exploitables.\n"
   },
   "nuclei": {
+    "description": "Détecte plus de 700 erreurs de configuration courantes sur les\n   applications webs.\n \n   - Sécurité\n   - Bonnes pratiques web\n",
+    "info": "",
     "label": "Nucléi",
-    "url": "https://nuclei.projectdiscovery.io/",
     "tags": [
       "security"
     ],
-    "description": "Détecte plus de 700 erreurs de configuration courantes sur les\n   applications webs.\n \n   - Sécurité\n   - Bonnes pratiques web\n",
-    "warning": "Ce teste peut prendre de 5 à 10 minutes par URL\n",
-    "info": ""
-  },
-  "thirdparties": {
-    "label": "Third-parties (scripts externes)",
-    "url": "https://github.com/SocialGouv/thirdparties",
-    "tags": [
-      "privacy"
-    ],
-    "description": "Liste tous les scripts externes chargés par une URL et qui peuvent avoir un impact sur :\n- Performances web\n- Sécurité\n- Vie privée\n",
-    "warning": "Certains script légitimes peuvent apparaitre dans cette catégorie s'ils sont hébergés sur d'autres serveurs\n",
-    "info": ""
-  },
-  "wappalyzer": {
-    "label": "Wappalyzer",
-    "url": "https://www.wappalyzer.com/",
-    "tags": [
-      "technologies"
-    ],
-    "description": "Wappalyzer reconnait +1500 technologies web, Javascript, CMS, outillage...\n\n- Stack technique\n- Obsolescence\n- Parc\n",
-    "warning": "",
-    "info": ""
-  },
-  "stats": {
-    "label": "Statistiques",
-    "tags": [
-      "standards-betagouv"
-    ],
-    "description": "Vérifie si la page /stats existe\n",
-    "warning": "",
-    "info": ""
+    "url": "https://nuclei.projectdiscovery.io/",
+    "warning": "Ce teste peut prendre de 5 à 10 minutes par URL\n"
   },
   "page_budget": {
+    "description": "Vérifie si la page /budget existe\n",
+    "info": "",
     "label": "Budget",
     "tags": [
       "standards-betagouv"
     ],
-    "description": "Vérifie si la page /budget existe\n",
-    "warning": "",
-    "info": ""
-  },
-  "404": {
-    "label": "Erreurs 404",
-    "tags": [
-      "standards-betagouv"
-    ],
-    "description": "Détecte les erreurs 404 sur un site web.\n",
-    "warning": "",
-    "info": ""
-  },
-  "trivy": {
-    "label": "Vulnérabilités Trivy",
-    "url": "https://aquasecurity.github.io/trivy/",
-    "tags": [
-      "security"
-    ],
-    "description": "Trivy permet de scanner les containers docker à la recherche de vulnérabilités connues.\n   \nTrivy détecte les vulnérabilités niveau OS (Alpine, RHEL, CentOS, etc.) mais aussi niveau packages (Bundler, Composer, npm, yarn, etc.).\n",
-    "warning": "",
-    "info": "Vous devez saisir les urls des images à scanner dans le champ `docker` de votre url dans `dashlord.yaml`.\n"
-  },
-  "ecoindex": {
-    "label": "Score eco-index",
-    "url": "https://www.ecoindex.fr/comment-ca-marche/",
-    "tags": [
-      "ecoconception"
-    ],
-    "description": "EcoIndex green-it est un outil communautaire, gratuit et transparent qui, pour une URL donnée, permet d’évaluer :\n\n- sa performance environnementale absolue à l’aide d’un score sur 100 (higher is better)\n- sa performance environnementale relative à l’aide d’une note de A à G\n- l’empreinte technique de la page (poids, complexité, etc.)\n- l’empreinte environnementale associée (gaz à effet de serre et eau)\n\nL’objectif d’EcoIndex est d’aider le plus grand nombre à prendre conscience de l’impact environnemental de l’internet.\n",
-    "warning": "",
-    "info": ""
+    "warning": ""
   },
   "sonarcloud": {
+    "description": "SonarCloud permet d&apos;analyser le code source des repositories et de détecter des bugs, vulnérabilités, duplications et autres indicateurs de qualité.\n",
+    "info": "",
     "label": "Score SonarCloud",
-    "url": "https://sonarcloud.io/",
     "tags": [
       "quality",
       "security"
     ],
-    "description": "SonarCloud permet d&apos;analyser le code source des repositories et de détecter des bugs, vulnérabilités, duplications et autres indicateurs de qualité.\n",
-    "warning": "",
-    "info": ""
+    "url": "https://sonarcloud.io/",
+    "warning": ""
   },
-  "dsfr": {
-    "label": "Détection du système de design de l'état",
-    "url": "https://www.systeme-de-design.gouv.fr/",
+  "stats": {
+    "description": "Vérifie si la page /stats existe\n",
+    "info": "",
+    "label": "Statistiques",
     "tags": [
       "standards-betagouv"
     ],
-    "description": "Détection du [système de design de l'état](https://www.systeme-de-design.gouv.fr/) avec la balise `fr-header__brand`\n",
-    "warning": "",
-    "info": ""
+    "warning": ""
   },
-  "declaration-a11y": {
-    "label": "Détection de la déclaration d'accessibilité",
+  "testssl": {
+    "description": "Évalue le niveau de confiance d'un certificat SSL\n\n- Bonnes pratiques de configuration\n- Protocoles disponibles\n- Compatibilité navigateurs\n- Solidité des clés de chiffrement\n",
+    "info": "L'audit complet avec les recommandations de correction est disponible pour chaque URL\n",
+    "label": "testssl.sh",
     "tags": [
-      "standards-betagouv"
+      "security"
     ],
-    "description": "Détection de la mention de déclaration d'accessibilité et de la page liée.\n",
-    "warning": "",
-    "info": ""
+    "url": "https://testssl.sh",
+    "warning": ""
   },
-  "declaration-rgpd": {
-    "label": "Détection des mentions RGPD",
+  "thirdparties": {
+    "description": "Liste tous les scripts externes chargés par une URL et qui peuvent avoir un impact sur :\n- Performances web\n- Sécurité\n- Vie privée\n",
+    "info": "",
+    "label": "Third-parties (scripts externes)",
     "tags": [
-      "standards-betagouv"
+      "privacy"
     ],
-    "description": "Détection des pages de mentions légales et politique de confidentialité\n",
-    "warning": "",
-    "info": ""
+    "url": "https://github.com/SocialGouv/thirdparties",
+    "warning": "Certains script légitimes peuvent apparaitre dans cette catégorie s'ils sont hébergés sur d'autres serveurs\n"
+  },
+  "tracking": {
+    "description": "Détecte le service de tracking utilisé par le site web.\n\n- Eulerian\n- Google Analytics\n- Matomo\n- etc.\n\nCette information est utile pour les statistiques de fréquentation du site web.\n",
+    "info": "",
+    "label": "Service de tracking",
+    "tags": [
+      "tracking"
+    ],
+    "warning": ""
+  },
+  "trivy": {
+    "description": "Trivy permet de scanner les containers docker à la recherche de vulnérabilités connues.\n   \nTrivy détecte les vulnérabilités niveau OS (Alpine, RHEL, CentOS, etc.) mais aussi niveau packages (Bundler, Composer, npm, yarn, etc.).\n",
+    "info": "Vous devez saisir les urls des images à scanner dans le champ `docker` de votre url dans `dashlord.yaml`.\n",
+    "label": "Vulnérabilités Trivy",
+    "tags": [
+      "security"
+    ],
+    "url": "https://aquasecurity.github.io/trivy/",
+    "warning": ""
+  },
+  "upwdownio": {
+    "description": "Évalue la qualité de service rendue par le serveur\n\n- Temps de réponse\n- Disponibilité\n- Indice de performance : [APDEX](https://updown.uservoice.com/knowledgebase/articles/915588-what-is-apdex)\n- Validité des certificats TLS\n",
+    "info": "Vous devez disposer d'un compte updown.io et d'une clé API\n",
+    "label": "Updown.io",
+    "tags": [
+      "performance"
+    ],
+    "url": "https://updown.io",
+    "warning": ""
+  },
+  "wappalyzer": {
+    "description": "Wappalyzer reconnait +1500 technologies web, Javascript, CMS, outillage...\n\n- Stack technique\n- Obsolescence\n- Parc\n",
+    "info": "",
+    "label": "Wappalyzer",
+    "tags": [
+      "technologies"
+    ],
+    "url": "https://www.wappalyzer.com/",
+    "warning": ""
+  },
+  "zap": {
+    "description": "Scan de vulnérabilités passif ZAP OWASP \"baseline\" qui permet de détecter des risques de sécurité de base.\n",
+    "info": "L'audit complet avec les recommandations de correction est disponible pour chaque URL\n",
+    "label": "OWASP Zed Attack Proxy",
+    "tags": [
+      "security"
+    ],
+    "url": "https://www.zaproxy.org/docs/docker/baseline-scan/",
+    "warning": ""
   }
 }

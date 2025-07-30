@@ -8,7 +8,7 @@ const getGrade = (row) =>
     1: "B", // low
     2: "D", // medium
     3: "F", // high
-  }[row.riskcode] || "A");
+  })[row.riskcode] || "A";
 
 /** @param {ZapReport} report */
 const summary = (report) => {

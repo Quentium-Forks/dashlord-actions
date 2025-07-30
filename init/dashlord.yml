@@ -1,6 +1,8 @@
 title: Test 1
+description: This is a test configuration for Dashlord.
+entity: Test Entity
 tools:
-  404: true
+  "404": true
   budget_page: true
   codescan: true
   declaration-a11y: true

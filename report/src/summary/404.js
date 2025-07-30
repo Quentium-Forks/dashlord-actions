@@ -5,7 +5,7 @@ const summary = (report) => {
     const grade = links.length > 20 ? "F" : links.length > 10 ? "D" : "A";
     return {
       "404Grade": grade,
-      "404Count": links,
+      "404Count": links.length,
     };
   }
 };

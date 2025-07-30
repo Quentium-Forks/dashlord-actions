@@ -130,45 +130,33 @@ const requireToolData = (filename) => (basePath) =>
   requireJson(path.join(basePath, filename));
 
 const tools = {
-  http: { data: requireToolData("http.json") },
-  updownio: { data: requireToolData("updownio.json") },
-  nmap: { data: requireToolData("nmapvuln.json") },
-  dependabot: { data: requireToolData("dependabotalerts.json") },
+  404: { data: requireToolData("404.json"), cleanup: wget404Cleanup },
+  betagouv: { data: requireToolData("betagouv.json") },
+  budget_page: { data: requireToolData("budget_page.json") },
   codescan: { data: requireToolData("codescanalerts.json") },
-  testssl: { data: requireToolData("testssl.json") },
-  thirdparties: { data: requireToolData("thirdparties.json") },
-  wappalyzer: { data: requireToolData("wappalyzer.json") },
-  zap: { data: requireToolData("zap.json"), cleanup: zapCleanup },
-  nuclei: { data: requireToolData("nuclei.json"), cleanup: nucleiCleanup },
+  "declaration-a11y": { data: requireToolData("declaration-a11y.json") },
+  "declaration-rgpd": { data: requireToolData("declaration-rgpd.json") },
+  dependabot: { data: requireToolData("dependabotalerts.json") },
+  dsfr: { data: requireToolData("dsfr.json") },
+  ecoindex: { data: requireToolData("ecoindex.json") },
+  github_repository: { data: requireToolData("github_repository.json") },
+  http: { data: requireToolData("http.json") },
   lhr: { data: requireToolData("lhr.json"), cleanup: lhrCleanup },
+  nmap: { data: requireToolData("nmapvuln.json") },
+  nuclei: { data: requireToolData("nuclei.json"), cleanup: nucleiCleanup },
   screenshot: {
     /** @param {string} basePath scan directory */
     data: (basePath) => fs.existsSync(path.join(basePath, "screenshot.jpeg")),
   },
+  sonarcloud: { data: requireToolData("sonarcloud.json") },
   stats: { data: requireToolData("stats.json") },
-  github_repository: { data: requireToolData("github_repository.json") },
-  budget_page: { data: requireToolData("budget_page.json") },
-  404: { data: requireToolData("404.json"), cleanup: wget404Cleanup },
-  // disable trivy
-  // trivy: { data: requireToolData("trivy.json") /*, cleanup: trivyCleanup */ },
-  "declaration-a11y": {
-    data: requireToolData("declaration-a11y.json"),
-  },
-  "declaration-rgpd": {
-    data: requireToolData("declaration-rgpd.json"),
-  },
-  betagouv: {
-    data: requireToolData("betagouv.json"),
-  },
-  ecoindex: {
-    data: requireToolData("ecoindex.json"),
-  },
-  sonarcloud: {
-    data: requireToolData("sonarcloud.json"),
-  },
-  dsfr: {
-    data: requireToolData("dsfr.json"),
-  },
+  testssl: { data: requireToolData("testssl.json") },
+  thirdparties: { data: requireToolData("thirdparties.json") },
+  tracking: { data: requireToolData("tracking.json") },
+  // trivy: { data: requireToolData("trivy.json") },
+  updownio: { data: requireToolData("updownio.json") },
+  wappalyzer: { data: requireToolData("wappalyzer.json") },
+  zap: { data: requireToolData("zap.json"), cleanup: zapCleanup },
 };
 
 //@ts-expect-error

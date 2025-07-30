@@ -2,7 +2,8 @@
 
 exports[`should compute summary for some URL report 1`] = `
 Object {
-  "404": 5,
+  "404Count": 5,
+  "404Grade": "A,
   "apdex": 1,
   "apdexGrade": "A",
   "codescanCount": 0,

@@ -4,7 +4,7 @@ const summary = (report) => {
     const githubRepositoryGrade = report.grade;
     if (githubRepositoryGrade) {
       return {
-        githubRepositoryGrade
+        githubRepositoryGrade,
       };
     }
   }
