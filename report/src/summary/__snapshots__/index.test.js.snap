@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should compute summary for some URL report 1`] = `
-Object {
+{
   "404Count": 5,
-  "404Grade": "A,
+  "404Grade": "A",
   "apdex": 1,
   "apdexGrade": "A",
   "codescanCount": 0,

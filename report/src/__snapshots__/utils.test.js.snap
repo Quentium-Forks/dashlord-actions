@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`getUrls should parse dashlord.yaml file correctly 1`] = `
-Array [
-  Object {
-    "tags": Array [
+[
+  {
+    "tags": [
       "telecom",
       "provider",
     ],
     "title": "Homepage free.fr",
     "url": "https://www.free.fr",
   },
-  Object {
-    "tags": Array [
+  {
+    "tags": [
       "oldie",
     ],
     "title": "something",
@@ -21,17 +21,17 @@ Array [
 `;
 
 exports[`getUrls should parse dashlord.yml file correctly 1`] = `
-Array [
-  Object {
-    "tags": Array [
+[
+  {
+    "tags": [
       "telecom",
       "provider",
     ],
     "title": "Homepage free.fr",
     "url": "https://www.free.fr",
   },
-  Object {
-    "tags": Array [
+  {
+    "tags": [
       "oldie",
     ],
     "title": "something",

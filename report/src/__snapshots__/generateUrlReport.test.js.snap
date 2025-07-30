@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`generateUrlReport should allow empty/invalid reports 1`] = `
-Object {
+{
   "404": null,
   "betagouv": null,
   "budget_page": null,
-  "codescan": Object {
+  "codescan": {
     "report": "codescanalerts.json",
     "totalCount": 42,
   },
@@ -18,11 +18,11 @@ Object {
   "http": null,
   "lhr": null,
   "nmap": null,
-  "nuclei": Array [],
+  "nuclei": [],
   "screenshot": false,
   "sonarcloud": null,
   "stats": null,
-  "summary": Object {
+  "summary": {
     "codescanCount": 42,
     "codescanGrade": undefined,
     "declaration-a11y": undefined,
@@ -30,9 +30,10 @@ Object {
   },
   "testssl": null,
   "thirdparties": null,
+  "tracking": null,
   "updownio": null,
   "url": "https://www.test.com",
-  "wappalyzer": Object {
+  "wappalyzer": {
     "report": "wappalyzer.json",
   },
   "zap": null,
@@ -40,76 +41,76 @@ Object {
 `;
 
 exports[`generateUrlReport should generate latest report for a valid url 1`] = `
-Object {
-  "404": Array [
+{
+  "404": [
     1,
     2,
     3,
   ],
   "betagouv": null,
-  "budget_page": Object {
+  "budget_page": {
     "report": "budget_page.json",
   },
-  "codescan": Object {
+  "codescan": {
     "report": "codescanalerts.json",
     "totalCount": 42,
   },
-  "declaration-a11y": Object {
+  "declaration-a11y": {
     "mention": "Accessibilité : partiellement conforme",
   },
-  "declaration-rgpd": Array [
-    Object {
+  "declaration-rgpd": [
+    {
       "declarationUrl": "https://declaration-ml.test",
       "maxScore": 4,
       "score": 3,
       "slug": "ml",
     },
-    Object {
+    {
       "declarationUrl": "https://declaration-pc.test",
       "maxScore": 4,
       "score": 3,
       "slug": "pc",
     },
   ],
-  "dependabot": Object {
+  "dependabot": {
     "report": "dependabotalerts.json",
   },
   "dsfr": null,
   "ecoindex": null,
-  "github_repository": Object {
+  "github_repository": {
     "report": "github_repository.json",
   },
-  "http": Object {
+  "http": {
     "report": "http.json",
   },
-  "lhr": Array [
-    Object {
-      "audits": Object {},
-      "categories": Object {},
+  "lhr": [
+    {
+      "audits": {},
+      "categories": {},
       "fetchTime": undefined,
       "finalUrl": undefined,
       "requestedUrl": undefined,
       "runWarnings": undefined,
     },
   ],
-  "nmap": Object {
+  "nmap": {
     "report": "nmap.json",
   },
-  "nuclei": Array [],
+  "nuclei": [],
   "screenshot": false,
-  "sonarcloud": Array [
-    Object {
+  "sonarcloud": [
+    {
       "repo": "sensgithub/eHospital",
-      "result": Object {
+      "result": {
         "analysisDate": "2023-04-03T01:37:49+0200",
-        "commit": Object {
+        "commit": {
           "date": "2023-04-03T01:37:44+0200",
           "message": "Delete codeql.yml",
           "sha": "28f2cf43a343f5215ffa1052d9c659333626a2a4",
         },
         "isMain": true,
         "name": "main",
-        "status": Object {
+        "status": {
           "bugs": 174,
           "codeSmells": 2198,
           "vulnerabilities": 23,
@@ -117,18 +118,18 @@ Object {
         "type": "LONG",
       },
     },
-    Object {
+    {
       "repo": "zabbix/zabbix",
-      "result": Object {
+      "result": {
         "analysisDate": "2023-04-02T02:17:15+0200",
-        "commit": Object {
+        "commit": {
           "date": "2023-03-31T21:45:03+0200",
           "message": ".......... [ZBX-1357] automatic update of translation strings",
           "sha": "f9d2062ed6560094ad6f4c8772cd82b72328cd83",
         },
         "isMain": true,
         "name": "master",
-        "status": Object {
+        "status": {
           "bugs": 73,
           "codeSmells": 13669,
           "qualityGateStatus": "ERROR",
@@ -138,11 +139,12 @@ Object {
       },
     },
   ],
-  "stats": Object {
+  "stats": {
     "report": "stats.json",
   },
-  "summary": Object {
-    "404": 3,
+  "summary": {
+    "404Count": 3,
+    "404Grade": "A",
     "codescanCount": 42,
     "codescanGrade": undefined,
     "declaration-a11y": "F",
@@ -150,22 +152,23 @@ Object {
     "declaration-rgpd-pc": "D",
     "sonarcloudGrade": "F",
   },
-  "testssl": Array [
-    Object {
+  "testssl": [
+    {
       "report": "testssl.json",
     },
   ],
-  "thirdparties": Object {
+  "thirdparties": {
     "report": "thirdparties.json",
   },
-  "updownio": Object {
+  "tracking": null,
+  "updownio": {
     "report": "updownio.json",
   },
   "url": "https://www.test.com",
-  "wappalyzer": Object {
+  "wappalyzer": {
     "report": "wappalyzer.json",
   },
-  "zap": Object {
+  "zap": {
     "report": "zap.json",
     "site": undefined,
   },
