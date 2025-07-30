@@ -52,7 +52,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -67,7 +69,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -82,7 +86,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -204,7 +210,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -219,7 +227,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -234,7 +244,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -323,7 +335,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -338,7 +352,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -353,7 +369,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -442,7 +460,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -457,7 +477,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -472,7 +494,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -561,7 +585,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -576,7 +602,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -591,7 +619,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -680,7 +710,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -695,7 +727,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -710,7 +744,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -799,7 +835,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -814,7 +852,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -829,7 +869,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -918,7 +960,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -933,7 +977,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -948,7 +994,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -1037,7 +1085,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -1052,7 +1102,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -1067,7 +1119,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -1156,7 +1210,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -1171,7 +1227,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -1186,7 +1244,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -1275,7 +1335,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -1290,7 +1352,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -1305,7 +1369,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -1394,7 +1460,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -1409,7 +1477,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -1424,7 +1494,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -1513,7 +1585,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -1528,7 +1602,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -1543,7 +1619,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -1632,7 +1710,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -1647,7 +1727,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -1662,7 +1744,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -1784,7 +1868,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -1799,7 +1885,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
@@ -1814,7 +1902,9 @@ exports[`Should render UpdownIo 1`] = `
         <div
           class="_metric_dd33f8 fr-col-4"
         >
-          <div />
+          <div
+            style="background: var(--background-contrast-grey);"
+          />
           <div
             class="_metricTitle_dd33f8"
           >
