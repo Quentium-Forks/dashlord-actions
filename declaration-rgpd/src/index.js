@@ -1,6 +1,6 @@
 const jsdom = require("jsdom");
 const { fuzzy } = require("fast-fuzzy");
-// const { execSync } = require("child_process");
+const { execSync } = require("child_process");
 
 const { JSDOM } = jsdom;
 
@@ -77,21 +77,21 @@ const getDeclarationUrl = (dom, bestMatch, url) => {
   return declarationUrl;
 };
 
-const analyseDeclaration = (dom, result, search, thirdPartiesJson) => {
+const analyseDeclaration = (result, search, thirdPartiesJson) => {
   // get declaration HTML
   if (result.declarationUrl.toLowerCase().match(/\.pdf$/)) {
     // todo: handle PDF
     return result;
   }
-  let htmlOutput = dom.serialize();
-  // try {
-  //   htmlOutput = execSync(
-  //     `LANGUAGE=fr npx @socialgouv/get-html ${result.declarationUrl}`
-  //   );
-  // } catch (e) {
-  //   console.error(`Error: get-html failed for ${result.declarationUrl}`);
-  //   return result;
-  // }
+  let htmlOutput;
+  try {
+    htmlOutput = execSync(
+      `LANGUAGE=fr npx @socialgouv/get-html ${result.declarationUrl}`
+    );
+  } catch (e) {
+    console.error(`Error: get-html failed for ${result.declarationUrl}`);
+    return result;
+  }
   const htmlString = htmlOutput.toString().toUpperCase();
   result.maxScore = search.mustMatch.length;
 
@@ -155,7 +155,7 @@ const analyseDom = async (
         } catch (e) {
           console.error("Cannot parse thirdparties JSON", e);
         }
-        result = analyseDeclaration(dom, result, search, thirdPartiesJson);
+        result = analyseDeclaration(result, search, thirdPartiesJson);
       }
     }
     return result;
@@ -168,14 +168,26 @@ const analyseFile = async (filePath, { url, thirdPartiesOutput } = {}) => {
 };
 
 // warn: this wont work for SPA applications
-const analyseUrl = async (url) => {
+const getDom = async (url) => {
   const resourceLoader = new jsdom.ResourceLoader({
     strictSSL: false,
     userAgent:
       "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0 - dashlord",
   });
-  const dom = await JSDOM.fromURL(url, { resources: resourceLoader });
-  return analyseDom(dom, { url });
+  return await JSDOM.fromURL(url, { resources: resourceLoader });
+};
+
+const analyseUrl = async (url) => {
+  if (!url) {
+    throw new Error("No URL provided for analysis");
+  }
+  try {
+    const dom = await getDom(url);
+    return analyseDom(dom, { url });
+  } catch (e) {
+    console.error(`Error fetching URL ${url}:`, e);
+    throw e;
+  }
 };
 
 module.exports = { analyseDom, analyseFile, analyseUrl };
