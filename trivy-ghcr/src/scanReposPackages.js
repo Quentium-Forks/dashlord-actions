@@ -42,7 +42,7 @@ module.exports = scanReposPackages;
 
 if (require.main === module) {
   const repos = process.argv[process.argv.length - 1];
-  if (repos.match(/^([^/]+\/[^/]+,?)+$/)) {
+  if (repos.match(/^([^/]+\/[^/]+)(,[^/]+\/[^/]+)*$/)) {
     scanReposPackages(repos.split(",")).then((results) =>
       console.log(JSON.stringify(results, null, 2))
     );
