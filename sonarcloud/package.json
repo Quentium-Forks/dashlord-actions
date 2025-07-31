@@ -4,29 +4,23 @@
   "main": "src/index.js",
   "license": "Apache-2.0",
   "types": "index.d.ts",
-  "dependencies": {
-    "@actions/core": "^1.11.1"
-  },
   "scripts": {
     "lint": "eslint .",
     "test": "jest",
-    "all": "npm run lint && npm run test",
-    "fetch": "node src/index.js"
+    "all": "npm run lint && npm run test"
   },
   "jest": {
     "modulePathIgnorePatterns": [
       "<rootDir>/www"
     ]
   },
+  "dependencies": {
+    "@actions/core": "^1.11.1"
+  },
   "devDependencies": {
-    "@socialgouv/eslint-config-strict": "^1.0.0-beta.5",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.1.0",
-    "@types/node-fetch": "^2.6.12",
-    "babel-eslint": "^10.1.0",
     "eslint": "^8.57.1",
-    "jest": "^30.0.5",
-    "prettier": "^3.6.2",
-    "typescript": "^5.8.3"
+    "jest": "^30.0.5"
   }
 }

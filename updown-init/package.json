@@ -2,17 +2,10 @@
   "name": "updown-init",
   "description": "Get some URL HTML content with puppeteer",
   "version": "1.0.0",
-  "files": [
-    "bin",
-    "src"
-  ],
   "main": "src/index.js",
   "license": "Apache-2.0",
   "dependencies": {
     "@actions/core": "^1.11.1",
     "yaml": "^2.8.0"
-  },
-  "devDependencies": {
-    "@types/node": "^24.1.0"
   }
 }

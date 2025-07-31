@@ -22,6 +22,7 @@ runs:
 
     - shell: bash
       run: |
+        cd ${{ github.action_path }}
         set +e
 
         remove_url_prefix() {

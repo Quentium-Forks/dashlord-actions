@@ -26,4 +26,4 @@ runs:
       id: scan
       run: |
         cd ${{ github.action_path }}
-        yarn -s scan ${{ inputs.repos }} > ${{ github.workspace }}/${{ inputs.output }}
+        node ${{ github.action_path }}/src/scanReposPackages.js ${{ inputs.repos }} > ${{ github.workspace }}/${{ inputs.output }}
