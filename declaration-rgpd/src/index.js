@@ -1,6 +1,5 @@
 const jsdom = require("jsdom");
 const { fuzzy } = require("fast-fuzzy");
-const { execSync } = require("child_process");
 
 const { JSDOM } = jsdom;
 
@@ -77,22 +76,25 @@ const getDeclarationUrl = (dom, bestMatch, url) => {
   return declarationUrl;
 };
 
-const analyseDeclaration = (result, search, thirdPartiesJson) => {
+const analyseDeclaration = async (result, search, thirdPartiesJson) => {
   // get declaration HTML
   if (result.declarationUrl.toLowerCase().match(/\.pdf$/)) {
     // todo: handle PDF
     return result;
   }
-  let htmlOutput;
+  let htmlString = "";
   try {
-    htmlOutput = execSync(
-      `LANGUAGE=fr npx @socialgouv/get-html ${result.declarationUrl}`
-    );
+    const dom = await getDom(result.declarationUrl);
+    htmlString = dom.window.document.documentElement.outerHTML.toUpperCase();
   } catch (e) {
-    console.error(`Error: get-html failed for ${result.declarationUrl}`);
+    console.error(`Error: getDom failed for ${result.declarationUrl}`);
+    // act as if no declaration was found
+    let matchResult = matchInHtml(htmlString, search.mustMatch);
+    result.score = matchResult.score;
+    result.missingWords = matchResult.missing;
+    result.maxScore = search.mustMatch.length;
     return result;
   }
-  const htmlString = htmlOutput.toString().toUpperCase();
   result.maxScore = search.mustMatch.length;
 
   // get score from required words & missing words array
@@ -119,47 +121,46 @@ const analyseDeclaration = (result, search, thirdPartiesJson) => {
   return result;
 };
 
-const analyseDom = async (
-  dom,
-  { url = "", thirdPartiesOutput = "{}" } = {}
-) => {
+const analyseDom = async (dom, { url = "", thirdPartiesOutput = "{}" } = {}) => {
   const text = Array.from(dom.window.document.querySelectorAll("a"))
     .map((a) => a.text)
     .join(" ");
   // add an object to result for every searches entry
-  return searches.map((search) => {
-    // fuzzy find the best match
-    let result = {
-      slug: search.slug,
-      mention: null,
-      maxScore: 0,
-      score: 0,
-      missingWords: [],
-      missingTrackers: [],
-    };
-    const status = search.needles
-      .map((needle) => ({ needle, score: fuzzy(needle, text) }))
-      .sort((a, b) => a.score - b.score)
-      .reverse();
+  return Promise.all(
+    searches.map(async (search) => {
+      // fuzzy find the best match
+      let result = {
+        slug: search.slug,
+        mention: null,
+        maxScore: 0,
+        score: 0,
+        missingWords: [],
+        missingTrackers: [],
+      };
+      const status = search.needles
+        .map((needle) => ({ needle, score: fuzzy(needle, text) }))
+        .sort((a, b) => a.score - b.score)
+        .reverse();
 
-    // ensure were confident enough
-    const bestMatch = status[0];
-    if (bestMatch.score > 0.8) {
-      result.mention = bestMatch.needle;
-      result.declarationUrl = getDeclarationUrl(dom, bestMatch, url);
+      // ensure were confident enough
+      const bestMatch = status[0];
+      if (bestMatch.score > 0.8) {
+        result.mention = bestMatch.needle;
+        result.declarationUrl = getDeclarationUrl(dom, bestMatch, url);
 
-      if (result.declarationUrl) {
-        let thirdPartiesJson = {};
-        try {
-          thirdPartiesJson = JSON.parse(thirdPartiesOutput);
-        } catch (e) {
-          console.error("Cannot parse thirdparties JSON", e);
+        if (result.declarationUrl) {
+          let thirdPartiesJson = {};
+          try {
+            thirdPartiesJson = JSON.parse(thirdPartiesOutput);
+          } catch (e) {
+            console.error("Cannot parse thirdparties JSON", e);
+          }
+          result = await analyseDeclaration(result, search, thirdPartiesJson);
         }
-        result = analyseDeclaration(result, search, thirdPartiesJson);
       }
-    }
-    return result;
-  });
+      return result;
+    }),
+  );
 };
 
 const analyseFile = async (filePath, { url, thirdPartiesOutput } = {}) => {
