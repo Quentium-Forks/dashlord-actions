@@ -35,5 +35,5 @@ runs:
         export LANGUAGE="${{ inputs.language }}"
         URLS=$(echo "${{ inputs.url }}" | sed "s/^/--url=/" | sed "s/,/ --url=/g")
         echo $URLS
-        yarn lhci collect ${{ inputs.collectFlags }} $URLS --settings.chromeFlags="${{ inputs.chromeFlags }} --lang=$LANGUAGE"
+        yarn -s lhci collect ${{ inputs.collectFlags }} $URLS --settings.chromeFlags="${{ inputs.chromeFlags }} --lang=$LANGUAGE"
         mv .lighthouseci ${{ github.workspace }}/

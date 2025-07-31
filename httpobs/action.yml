@@ -38,6 +38,6 @@ runs:
 
         export RETRIEVER_USER_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0 - dashlord",
 
-        yarn mdn-http-observatory-scan "$HOST" > ${{ github.workspace }}/${{ inputs.output }}
+        yarn -s mdn-http-observatory-scan "$HOST" > ${{ github.workspace }}/${{ inputs.output }}
 
         cat ${{ github.workspace }}/${{ inputs.output }} | jq ".scan.grade"

@@ -31,4 +31,4 @@ runs:
         export LANG=en_GB.UTF-8 
 
         # wget return error exit code when errors founds, prevent action failure with `|| true`
-        wget --level=${{ inputs.depth }} --spider --recursive 2>&1 >/dev/null ${{ inputs.url }} | yarn wget-parser > ${{ inputs.output }} || true
+        wget --level=${{ inputs.depth }} --spider --recursive 2>&1 >/dev/null ${{ inputs.url }} | yarn -s wget-parser > ${{ inputs.output }} || true
