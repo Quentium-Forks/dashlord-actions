@@ -22,7 +22,10 @@ it("Should render Url with NEXT_PUBLIC_BASE_PATH", async () => {
   const { Url } = await import("../components/Url");
   const tree = renderer.create(<Url {...props} />);
   const img = tree.root.findByType("img");
-  expect(img.props.src).toEqual(
-    "/prefix/report/aHR0cHM6Ly93d3cuZmFicmlxdWUuc29jaWFsLmdvdXYuZnI=/screenshot.jpeg"
+  expect(img.props.src).toContain(
+    "/_next/image?url=" +
+    encodeURIComponent(
+      `${process.env.NEXT_PUBLIC_BASE_PATH}/report/${btoa(TEST_URL)}/screenshot.jpeg`
+    )
   );
 });

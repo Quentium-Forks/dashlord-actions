@@ -1157,7 +1157,23 @@ exports[`Url > Should render full Url with screenshot 1`] = `
     <img
       alt="Copie d'écran de https://www.fabrique.social.gouv.fr"
       className="_screenshotImg_195a1c"
-      src="/report/aHR0cHM6Ly93d3cuZmFicmlxdWUuc29jaWFsLmdvdXYuZnI=/screenshot.jpeg"
+      data-nimg="1"
+      decoding="async"
+      height={0}
+      loading="lazy"
+      onError={[Function]}
+      onLoad={[Function]}
+      sizes="100vw"
+      src="/_next/image?url=%2Freport%2FaHR0cHM6Ly93d3cuZmFicmlxdWUuc29jaWFsLmdvdXYuZnI%3D%2Fscreenshot.jpeg&w=3840&q=75"
+      srcSet="/_next/image?url=%2Freport%2FaHR0cHM6Ly93d3cuZmFicmlxdWUuc29jaWFsLmdvdXYuZnI%3D%2Fscreenshot.jpeg&w=640&q=75 640w, /_next/image?url=%2Freport%2FaHR0cHM6Ly93d3cuZmFicmlxdWUuc29jaWFsLmdvdXYuZnI%3D%2Fscreenshot.jpeg&w=750&q=75 750w, /_next/image?url=%2Freport%2FaHR0cHM6Ly93d3cuZmFicmlxdWUuc29jaWFsLmdvdXYuZnI%3D%2Fscreenshot.jpeg&w=828&q=75 828w, /_next/image?url=%2Freport%2FaHR0cHM6Ly93d3cuZmFicmlxdWUuc29jaWFsLmdvdXYuZnI%3D%2Fscreenshot.jpeg&w=1080&q=75 1080w, /_next/image?url=%2Freport%2FaHR0cHM6Ly93d3cuZmFicmlxdWUuc29jaWFsLmdvdXYuZnI%3D%2Fscreenshot.jpeg&w=1200&q=75 1200w, /_next/image?url=%2Freport%2FaHR0cHM6Ly93d3cuZmFicmlxdWUuc29jaWFsLmdvdXYuZnI%3D%2Fscreenshot.jpeg&w=1920&q=75 1920w, /_next/image?url=%2Freport%2FaHR0cHM6Ly93d3cuZmFicmlxdWUuc29jaWFsLmdvdXYuZnI%3D%2Fscreenshot.jpeg&w=2048&q=75 2048w, /_next/image?url=%2Freport%2FaHR0cHM6Ly93d3cuZmFicmlxdWUuc29jaWFsLmdvdXYuZnI%3D%2Fscreenshot.jpeg&w=3840&q=75 3840w"
+      style={
+        {
+          "color": "transparent",
+          "height": "auto",
+          "width": "100%",
+        }
+      }
+      width={0}
     />
   </div>,
   <div

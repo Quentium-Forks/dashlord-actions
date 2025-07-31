@@ -115,6 +115,10 @@ export const UrlHeader = ({
           className={styles.screenshotImg}
           alt={`Copie d'écran de ${url}`}
           src={`${BASE_PATH}/report/${btoa(url)}/screenshot.jpeg`}
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{ width: '100%', height: 'auto' }}
         />
       )}
     </div>
