@@ -15,7 +15,7 @@ runs:
   using: "composite"
   steps:
     - name: Get URL HTML
-      uses: ./get-html
+      uses: Quentium-Forks/dashlord-actions/get-html@main
       with:
         url: ${{ inputs.url }}
         output: tracking-html.html

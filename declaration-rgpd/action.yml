@@ -25,7 +25,7 @@ runs:
         yarn
 
     - name: Get URL HTML
-      uses: ./get-html
+      uses: Quentium-Forks/dashlord-actions/get-html@main
       with:
         url: ${{ inputs.url }}
         output: result.html
