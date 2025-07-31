@@ -22,17 +22,18 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-node@v4
-      with:
-        node-version: "22"
+    - name: Install
+      shell: bash
+      run: |
+        cd ${{ github.action_path }}
+        yarn
 
     - shell: bash
       id: scan
       run: |
         cd ${{ github.action_path }}
-        yarn
         export LANGUAGE="${{ inputs.language }}"
-        URLS=$(echo ${{ inputs.url }} | sed "s/^/--url=/" | sed "s/,/ --url=/g")
+        URLS=$(echo "${{ inputs.url }}" | sed "s/^/--url=/" | sed "s/,/ --url=/g")
         echo $URLS
-        yarn lhci collect "${{ inputs.collectFlags }}" $URLS --settings.chromeFlags="${{ inputs.chromeFlags }} --lang=$LANGUAGE"
+        yarn lhci collect ${{ inputs.collectFlags }} $URLS --settings.chromeFlags="${{ inputs.chromeFlags }} --lang=$LANGUAGE"
         mv .lighthouseci ${{ github.workspace }}/

@@ -1,5 +1,5 @@
 {
-  "name": "@socialgouv/updown-init",
+  "name": "updown-init",
   "description": "Get some URL HTML content with puppeteer",
   "version": "1.0.0",
   "files": [

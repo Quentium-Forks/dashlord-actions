@@ -18,14 +18,15 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-node@v4
-      with:
-        node-version: "22"
+    - name: Install
+      shell: bash
+      run: |
+        cd ${{ github.action_path }}
+        yarn
 
     - shell: bash
       id: fetch
       run: |
         cd ${{ github.action_path }}
-        yarn
         export LANGUAGE="${{ inputs.language }}"
         node ${{ github.action_path }}/bin/index.js ${{ inputs.url }} > ${{ github.workspace }}/${{ inputs.output }}

@@ -1,8 +1,8 @@
 {
-  "name": "lhci",
+  "name": "httpobs",
   "version": "1.0.0",
   "license": "Apache-2.0",
   "dependencies": {
-    "@lhci/cli": "^0.15.1"
+    "@mdn/mdn-http-observatory": "^1.4.0"
   }
 }

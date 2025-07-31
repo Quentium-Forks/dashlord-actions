@@ -26,13 +26,14 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-node@v4
-      with:
-        node-version: "22"
+    - name: Install
+      shell: bash
+      run: |
+        cd ${{ github.action_path }}
+        yarn
 
     - shell: bash
       id: init
       run: |
         cd ${{ github.action_path }}
-        yarn
         node ${{ github.action_path }}/src/index.js

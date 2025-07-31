@@ -20,7 +20,7 @@ runs:
 
         echo "testing URL $1"
 
-        wget -q -S --no-check-certificate --user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0 - dashlord" "${{ inputs.url }}"
+        wget -q -S --no-check-certificate --user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0 - dashlord" ${{ inputs.url }}
 
         if ! [ "$?" -ne 0 ];
         then

@@ -18,10 +18,16 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Install
+      shell: bash
+      run: |
+        cd ${{ github.action_path }}
+        yarn
+
     - shell: bash
       run: |
         # ensure wget output is parsable
         export LANG=en_GB.UTF-8 
 
         # wget return error exit code when errors founds, prevent action failure with `|| true`
-        wget --level=${{ inputs.depth }} --spider --recursive 2>&1 >/dev/null ${{ inputs.url }} | npx wget-parser > ${{ inputs.output }} || true
+        wget --level=${{ inputs.depth }} --spider --recursive 2>&1 >/dev/null ${{ inputs.url }} | yarn wget-parser > ${{ inputs.output }} || true

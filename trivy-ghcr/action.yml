@@ -26,4 +26,4 @@ runs:
       id: scan
       run: |
         cd ${{ github.action_path }}
-        yarn -s scan "${{ inputs.repos }}" > ${{ github.workspace }}/${{ inputs.output }}
+        yarn -s scan ${{ inputs.repos }} > ${{ github.workspace }}/${{ inputs.output }}

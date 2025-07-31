@@ -16,6 +16,6 @@ runs:
   steps:
     - shell: bash
       run: |
-        docker run --name ecoindex vvatelot/ecoindex-cli:2.30.0 ecoindex-cli analyze --url="${{ inputs.url }}" --no-interaction --export-format json --output-file /code/out.json
-        docker cp ecoindex:/code/out.json "${{ github.workspace }}/${{ inputs.output }}"
-        cat "${{ github.workspace }}/${{ inputs.output }}"
+        docker run --name ecoindex vvatelot/ecoindex-cli:2.30.0 ecoindex-cli analyze --url=${{ inputs.url }} --no-interaction --export-format json --output-file /code/out.json
+        docker cp ecoindex:/code/out.json ${{ github.workspace }}/${{ inputs.output }}
+        cat ${{ github.workspace }}/${{ inputs.output }}

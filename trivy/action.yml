@@ -28,5 +28,5 @@ runs:
           docker run --pull=always --rm ghcr.io/aquasecurity/trivy:0.64.1 --quiet image --no-progress --format json --severity MEDIUM,HIGH,CRITICAL "$IMAGE" > "$OUTPUT" || true
         done
         # concatenate results for all images in a single JSON
-        jq -s '.' trivy-results/* > "${{ inputs.output }}"
+        jq -s '.' trivy-results/* > ${{ inputs.output }}
         echo "created in ${{ inputs.output }}"

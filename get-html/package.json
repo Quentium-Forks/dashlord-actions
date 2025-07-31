@@ -1,5 +1,5 @@
 {
-  "name": "@socialgouv/get-html",
+  "name": "get-html",
   "description": "Get some URL HTML content with puppeteer",
   "version": "1.1.1",
   "files": [
