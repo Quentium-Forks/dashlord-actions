@@ -897,8 +897,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ report }) => {
       description: "Détection de liens brisés",
       type: "number",
       valueGetter: (params) => {
-        const count = params.row.summary["404"] || null;
-        return count === "A+" ? 0 : count;
+        return params.row.summary["404Count"] || 0;
       },
       renderCell: (params) => {
         if (!isToolEnabled("404", params.row.url)) return <IconUnknown />;
