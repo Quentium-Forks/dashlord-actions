@@ -39,4 +39,5 @@ runs:
         # wget return error exit code when errors founds
         wget --level=${{ inputs.depth }} --spider --recursive 2>&1 > /dev/null ${{ inputs.url }} | yarn -s wget-parser > ${{ github.workspace }}/${{ inputs.output }}
 
-        cat ${{ github.workspace }}/${{ inputs.output }}
+        cat ${{ github.workspace }}/${{ inputs.output }} | jq ".links | length"
+        cat ${{ github.workspace }}/${{ inputs.output }} | jq ".broken | length"
