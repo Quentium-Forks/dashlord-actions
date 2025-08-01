@@ -33,8 +33,11 @@ runs:
     - shell: bash
       run: |
         cd ${{ github.action_path }}
+
         # ensure wget output is parsable
         export LANG=en_GB.UTF-8 
 
-        # wget return error exit code when errors founds, prevent action failure with `|| true`
-        wget --level=${{ inputs.depth }} --spider --recursive 2>&1 >/dev/null ${{ inputs.url }} | yarn -s wget-parser > ${{ inputs.output }} || true
+        # wget return error exit code when errors founds
+        wget --level=${{ inputs.depth }} --spider --recursive 2>&1 >/dev/null ${{ inputs.url }} | yarn -s wget-parser > ${{ github.workspace }}/${{ inputs.output }}
+
+        cat ${{ github.workspace }}/${{ inputs.output }}

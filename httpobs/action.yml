@@ -29,6 +29,7 @@ runs:
     - shell: bash
       run: |
         cd ${{ github.action_path }}
+
         set +e
 
         remove_url_prefix() {
@@ -38,12 +39,12 @@ runs:
           echo "$url"
         }
 
-        HOST=$(remove_url_prefix ${{ inputs.url }})
+        URL=$(remove_url_prefix ${{ inputs.url }})
 
-        echo "testing HOST $HOST"
+        echo "testing URL $URL"
 
         export RETRIEVER_USER_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0 - dashlord",
 
-        yarn -s mdn-http-observatory-scan $HOST > ${{ github.workspace }}/${{ inputs.output }}
+        yarn -s mdn-http-observatory-scan $URL > ${{ github.workspace }}/${{ inputs.output }}
 
         cat ${{ github.workspace }}/${{ inputs.output }} | jq ".scan.grade"

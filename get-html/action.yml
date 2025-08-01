@@ -34,5 +34,7 @@ runs:
       id: fetch
       run: |
         cd ${{ github.action_path }}
+
         export LANGUAGE="${{ inputs.language }}"
+
         node ${{ github.action_path }}/bin/index.js ${{ inputs.url }} > ${{ github.workspace }}/${{ inputs.output }}

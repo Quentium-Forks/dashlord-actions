@@ -30,4 +30,5 @@ runs:
       shell: bash
       run: |
         cd ${{ github.action_path }}
+
         node ${{ github.action_path }}/src/index.js ${{ inputs.repos }} > ${{ github.workspace }}/${{ inputs.output }}

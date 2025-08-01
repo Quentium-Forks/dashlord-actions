@@ -42,4 +42,5 @@ runs:
       id: init
       run: |
         cd ${{ github.action_path }}
+
         node ${{ github.action_path }}/src/index.js

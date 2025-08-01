@@ -17,16 +17,19 @@ runs:
     - name: Scan images
       shell: bash
       run: |
-        IFS=',' ;
-        mkdir trivy-results || true
+        IFS=','
+        mkdir -p trivy-results
+
         for image in `echo "${{ inputs.images }}"`; do
           # add latest tag if needed
           IMAGE=$([[ "${image}" =~ ":" ]] && echo "${image}" || echo "${image}:latest")
           OUTPUT=trivy-results/$(echo "$IMAGE" | base64).json
           echo "IMAGE: $IMAGE"
           echo "OUTPUT: $OUTPUT"
-          docker run --pull=always --rm ghcr.io/aquasecurity/trivy:0.64.1 --quiet image --no-progress --format json --severity MEDIUM,HIGH,CRITICAL "$IMAGE" > "$OUTPUT" || true
+          docker run --pull=always --rm ghcr.io/aquasecurity/trivy:0.64.1 --quiet image --no-progress --format json --severity MEDIUM,HIGH,CRITICAL "$IMAGE" > "$OUTPUT"
         done
+
         # concatenate results for all images in a single JSON
         jq -s '.' trivy-results/* > ${{ inputs.output }}
+
         echo "created in ${{ inputs.output }}"

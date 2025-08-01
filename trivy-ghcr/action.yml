@@ -32,4 +32,5 @@ runs:
       id: scan
       run: |
         cd ${{ github.action_path }}
+
         node ${{ github.action_path }}/src/scanReposPackages.js ${{ inputs.repos }} > ${{ github.workspace }}/${{ inputs.output }}

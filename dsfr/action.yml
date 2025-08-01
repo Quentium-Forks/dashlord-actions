@@ -33,3 +33,5 @@ runs:
         fi
 
         echo "$JSON" > ${{ github.workspace }}/${{ inputs.output }}
+
+        cat ${{ github.workspace }}/${{ inputs.output }}

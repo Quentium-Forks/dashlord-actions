@@ -21,4 +21,5 @@ runs:
       id: fetch
       run: |
         cd ${{ github.action_path }}
+
         node ${{ github.action_path }}/src/index.js
