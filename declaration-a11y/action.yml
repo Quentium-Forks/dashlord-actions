@@ -18,8 +18,6 @@ runs:
       uses: actions/setup-node@v4
       with:
         node-version: "lts/*"
-        cache: "yarn"
-        cache-dependency-path: "declaration-a11y/yarn.lock"
 
     - name: Install
       shell: bash
