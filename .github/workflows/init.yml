@@ -29,10 +29,10 @@ jobs:
       - name: Install
         shell: bash
         run: |
-          cd ${{ github.action_path }}
+          cd init
           yarn
 
       - shell: bash
         run: |
-          cd ${{ github.action_path }}
+          cd init
           yarn test

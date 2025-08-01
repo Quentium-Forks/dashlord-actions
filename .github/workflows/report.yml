@@ -29,21 +29,21 @@ jobs:
       - name: Install
         shell: bash
         run: |
-          cd ${{ github.action_path }}
+          cd report
           yarn
 
       - shell: bash
         run: |
-          cd ${{ github.action_path }}
+          cd report
           yarn test
 
       - name: Install
         shell: bash
         run: |
-          cd ${{ github.action_path }}/www
+          cd report/www
           yarn
 
       - shell: bash
         run: |
-          cd ${{ github.action_path }}/www
+          cd report/www
           SKIP_PREFLIGHT_CHECK=true yarn test

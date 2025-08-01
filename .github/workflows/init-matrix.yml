@@ -32,7 +32,7 @@ jobs:
 
       - shell: bash
         run: |
-          cd ${{ github.action_path }}
+          cd init
 
       - id: init
         uses: ./init
@@ -74,7 +74,7 @@ jobs:
 
       - shell: bash
         run: |
-          cd ${{ github.action_path }}
+          cd init
 
       - id: init
         uses: ./init

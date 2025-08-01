@@ -29,12 +29,12 @@ jobs:
       - name: Install
         shell: bash
         run: |
-          cd ${{ github.action_path }}
+          cd declaration-a11y
           yarn
 
       - shell: bash
         run: |
-          cd ${{ github.action_path }}
+          cd declaration-a11y
           yarn test
 
   tests-declaration-a11y:

@@ -29,12 +29,12 @@ jobs:
       - name: Install
         shell: bash
         run: |
-          cd ${{ github.action_path }}
+          cd declaration-rgpd
           yarn
 
       - shell: bash
         run: |
-          cd ${{ github.action_path }}
+          cd declaration-rgpd
           yarn test
 
   tests-declaration-rgpd:

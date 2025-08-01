@@ -29,13 +29,13 @@ jobs:
       - name: Install
         shell: bash
         run: |
-          cd ${{ github.action_path }}
+          cd sonarcloud
           yarn
 
       - name: Run JS tests
         shell: bash
         run: |
-          cd ${{ github.action_path }}
+          cd sonarcloud
           yarn test
 
       - name: Run action
