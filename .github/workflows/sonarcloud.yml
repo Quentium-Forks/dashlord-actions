@@ -24,6 +24,7 @@ jobs:
         with:
           node-version: "lts/*"
           cache: "yarn"
+          cache-dependency-path: "${{ github.action_path }}/yarn.lock"
 
       - name: Run JS tests
         shell: bash
