@@ -29,7 +29,7 @@ runs:
         echo "OUT_PATH: $OUT_PATH"
         echo "CLEANUP: $CLEANUP"
 
-        cd ${{ github.action_path }}
+        cd ${{ github.workspace }}
 
         mkdir -p $OUT_PATH
 
