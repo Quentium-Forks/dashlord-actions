@@ -30,6 +30,4 @@ runs:
         done
 
         # concatenate results for all images in a single JSON
-        jq -s '.' trivy-results/* > ${{ inputs.output }}
-
-        echo "created in ${{ inputs.output }}"
+        jq -s '.' trivy-results/* > ${{ github.workspace }}/${{ inputs.output }}

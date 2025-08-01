@@ -37,6 +37,6 @@ runs:
         export LANG=en_GB.UTF-8 
 
         # wget return error exit code when errors founds
-        wget --level=${{ inputs.depth }} --spider --recursive 2>&1 >/dev/null ${{ inputs.url }} | yarn -s wget-parser > ${{ inputs.output }}
+        wget --level=${{ inputs.depth }} --spider --recursive 2>&1 > /dev/null ${{ inputs.url }} | yarn -s wget-parser > ${{ github.workspace }}/${{ inputs.output }}
 
-        cat ${{ inputs.output }}
+        cat ${{ github.workspace }}/${{ inputs.output }}
