@@ -15,7 +15,7 @@ on:
 jobs:
   tests-ecoindex:
     runs-on: ubuntu-latest
-    name: ecoindex action
+    name: Test ecoindex
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

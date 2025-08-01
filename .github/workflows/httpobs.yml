@@ -15,7 +15,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    name: httpobs action
+    name: Test httpobs
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

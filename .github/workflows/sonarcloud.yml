@@ -15,14 +15,15 @@ on:
 jobs:
   tests-sonarcloud:
     runs-on: ubuntu-latest
-    name: sonarcloud action
+    name: Test sonarcloud
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: "lts/*"
+          cache: "yarn"
 
       - name: Run JS tests
         shell: bash

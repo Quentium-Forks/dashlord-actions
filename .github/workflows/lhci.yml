@@ -15,7 +15,7 @@ on:
 jobs:
   tests-lhci:
     runs-on: ubuntu-latest
-    name: lhci action
+    name: Test lhci
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

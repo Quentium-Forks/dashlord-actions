@@ -15,7 +15,7 @@ on:
 jobs:
   tests-dsfr-valid:
     runs-on: ubuntu-latest
-    name: dsfr valid
+    name: Test dsfr valid
     continue-on-error: true
     strategy:
       matrix:
@@ -42,7 +42,7 @@ jobs:
 
   tests-dsfr-invalid:
     runs-on: ubuntu-latest
-    name: dsfr invalid
+    name: Test dsfr invalid
     continue-on-error: true
     strategy:
       matrix:

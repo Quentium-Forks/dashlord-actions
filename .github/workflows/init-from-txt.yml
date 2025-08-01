@@ -1,4 +1,4 @@
-name: Test init matrix from txt
+name: Test init from txt
 
 on:
   push:

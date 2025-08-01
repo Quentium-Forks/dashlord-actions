@@ -56,9 +56,6 @@ jobs:
       matrix:
         sites: ${{ fromJson(needs.tests1.outputs.sites) }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - shell: bash
         run: |
           echo "${{ matrix.sites.url }}"
@@ -104,9 +101,6 @@ jobs:
       matrix:
         sites: ${{ fromJson(needs.tests2.outputs.sites) }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - shell: bash
         run: |
           echo "${{ matrix.sites.url }}"

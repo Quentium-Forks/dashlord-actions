@@ -15,7 +15,7 @@ on:
 jobs:
   tests-trivy:
     runs-on: ubuntu-latest
-    name: trivy action
+    name: Test trivy
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

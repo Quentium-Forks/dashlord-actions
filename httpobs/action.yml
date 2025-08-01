@@ -14,6 +14,12 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: "lts/*"
+        cache: "yarn"
+
     - name: Install
       shell: bash
       run: |
@@ -38,6 +44,6 @@ runs:
 
         export RETRIEVER_USER_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0 - dashlord",
 
-        yarn -s mdn-http-observatory-scan "$HOST" > ${{ github.workspace }}/${{ inputs.output }}
+        yarn -s mdn-http-observatory-scan $HOST > ${{ github.workspace }}/${{ inputs.output }}
 
         cat ${{ github.workspace }}/${{ inputs.output }} | jq ".scan.grade"

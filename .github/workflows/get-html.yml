@@ -15,7 +15,7 @@ on:
 jobs:
   tests-get-html:
     runs-on: ubuntu-latest
-    name: get-html action
+    name: Test get-html
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
