@@ -23,7 +23,7 @@ runs:
       with:
         node-version: "lts/*"
         cache: "yarn"
-        cache-dependency-path: "${{ github.action_path }}/yarn.lock"
+        cache-dependency-path: "404/yarn.lock"
 
     - name: Install
       shell: bash

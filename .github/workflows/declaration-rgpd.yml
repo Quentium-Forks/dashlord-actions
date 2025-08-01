@@ -24,12 +24,17 @@ jobs:
         with:
           node-version: "lts/*"
           cache: "yarn"
-          cache-dependency-path: "${{ github.action_path }}/yarn.lock"
+          cache-dependency-path: "declaration-rgpd/yarn.lock"
+
+      - name: Install
+        shell: bash
+        run: |
+          cd ${{ github.action_path }}
+          yarn
 
       - shell: bash
         run: |
-          cd declaration-rgpd
-          yarn
+          cd ${{ github.action_path }}
           yarn test
 
   tests-declaration-rgpd:

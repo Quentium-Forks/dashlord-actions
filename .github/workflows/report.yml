@@ -24,16 +24,26 @@ jobs:
         with:
           node-version: "lts/*"
           cache: "yarn"
-          cache-dependency-path: "${{ github.action_path }}/yarn.lock"
+          cache-dependency-path: "report/yarn.lock"
+
+      - name: Install
+        shell: bash
+        run: |
+          cd ${{ github.action_path }}
+          yarn
 
       - shell: bash
         run: |
-          cd report
-          yarn
+          cd ${{ github.action_path }}
           yarn test
 
+      - name: Install
+        shell: bash
+        run: |
+          cd ${{ github.action_path }}/www
+          yarn
+
       - shell: bash
         run: |
-          cd report/www
-          yarn
+          cd ${{ github.action_path }}/www
           SKIP_PREFLIGHT_CHECK=true yarn test

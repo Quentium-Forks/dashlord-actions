@@ -81,7 +81,6 @@ urls:
 ## Hacking
 
 ```shell
-cd init/
 yarn all
 yarn test -u # update jest snapshots
 ```
