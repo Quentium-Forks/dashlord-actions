@@ -5,15 +5,6 @@ const { JSDOM } = jsdom;
 
 const searches = [
   {
-    needle: "Accessibilité : non conforme",
-  },
-  {
-    needle: "Accessibilité : partiellement conforme",
-  },
-  {
-    needle: "Accessibilité : totalement conforme",
-  },
-  {
     needle: "Accessibilité - non conforme",
   },
   {
@@ -21,6 +12,15 @@ const searches = [
   },
   {
     needle: "Accessibilité - totalement conforme",
+  },
+  {
+    needle: "Accessibilité : non conforme",
+  },
+  {
+    needle: "Accessibilité : partiellement conforme",
+  },
+  {
+    needle: "Accessibilité : totalement conforme",
   },
 ];
 
