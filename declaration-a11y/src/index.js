@@ -13,6 +13,15 @@ const searches = [
   {
     needle: "Accessibilité : totalement conforme",
   },
+  {
+    needle: "Accessibilité - non conforme",
+  },
+  {
+    needle: "Accessibilité - partiellement conforme",
+  },
+  {
+    needle: "Accessibilité - totalement conforme",
+  },
 ];
 
 const analyseDom = async (dom, { url = "" } = {}) => {
