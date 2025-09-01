@@ -19,6 +19,7 @@ runs:
         URL="${{ inputs.url }}"
         CLEANUP="${{ inputs.cleanup }}"
         HOSTNAME=$(echo "${{ inputs.url }}" | sed -e 's/[^/]*\/\/\([^@]*@\)\?\([^:/]*\).*/\2/')
+        DASHLORD_REPO_PATH="${{ github.workspace }}"
         # store results in a folder with then base64 encoded url
         URL_BASE64=$(printf "%s" "$URL" | base64 -w 500) # default is wrap at 76
         OUT_PATH="./results/${URL_BASE64}"
@@ -26,6 +27,7 @@ runs:
         echo "URL: $URL"
         echo "URL base 64: $URL_BASE64"
         echo "HOSTNAME: $HOSTNAME"
+        echo "DASHLORD_REPO_PATH: $DASHLORD_REPO_PATH"
         echo "OUT_PATH: $OUT_PATH"
         echo "CLEANUP: $CLEANUP"
 
