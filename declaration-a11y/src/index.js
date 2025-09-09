@@ -35,7 +35,7 @@ const analyseDom = async (dom, { url = "" } = {}) => {
   const result = { mention: null };
   const bestStatus = status[0];
   if (bestStatus.score > 0.9) {
-    result.mention = bestStatus.needle;
+    result.mention = bestStatus.needle.replace(" - ", " : ");
     // try to find related href if any
     Array.from(dom.window.document.querySelectorAll("a")).filter((a) => {
       if (fuzzy(bestStatus.needle, a.text) > 0.9) {
