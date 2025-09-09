@@ -6,34 +6,28 @@ const grades = {
 
 /** @param {DeclarationA11yReport} report */
 const summary = (report) => {
-  // not known
-  let grade = undefined;
-  if (!report) {
-    return {
-      "declaration-a11y": undefined,
-    };
-  }
-  const mentionIndex = report.mention
-    ? Object.values(grades).indexOf(report.mention)
-    : -1;
+  if (report) {
+    const { mention, declarationUrl } = report;
+    const mentionIndex = mention ? Object.values(grades).indexOf(mention) : -1;
 
-  if (report.mention === null) {
-    // not detected
-    grade = "F";
-  } else if (mentionIndex > -1) {
-    if (report.declarationUrl) {
-      // @ts-ignore
-      grade = Object.keys(grades)[mentionIndex];
-    } else if (report.mention === "Accessibilité : non conforme") {
-      grade = "D";
-    } else {
-      grade = "F";
+    let grade = undefined;
+    if (mention !== undefined && mention !== null)
+      if (mentionIndex > -1) {
+        if (declarationUrl) {
+          grade = Object.keys(grades)[mentionIndex];
+        } else if (mention === "Accessibilité : non conforme") {
+          grade = "D";
+        } else {
+          grade = "F";
+        }
+      }
+
+    if (grade) {
+      return {
+        "declaration_a11yGrade": grade,
+      };
     }
   }
-
-  return {
-    "declaration-a11y": grade,
-  };
 };
 
 module.exports = summary;

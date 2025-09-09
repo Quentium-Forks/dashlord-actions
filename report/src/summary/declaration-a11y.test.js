@@ -3,38 +3,38 @@ const summary = require("./declaration-a11y");
 const tests = [
   {
     mention: undefined,
-    expected: { "declaration-a11y": undefined },
+    expected: undefined,
   },
   {
     mention: null,
-    expected: { "declaration-a11y": "F" },
+    expected: undefined,
   },
   {
     mention: "Accessibilité : totalement conforme",
-    expected: { "declaration-a11y": "F" },
+    expected: { "declaration_a11yGrade": "F" },
   },
   {
     mention: "Accessibilité : partiellement conforme",
-    expected: { "declaration-a11y": "F" },
+    expected: { "declaration_a11yGrade": "F" },
   },
   {
     mention: "Accessibilité : non conforme",
-    expected: { "declaration-a11y": "D" },
+    expected: { "declaration_a11yGrade": "D" },
   },
   {
     mention: "Accessibilité : totalement conforme",
     declarationUrl: "https://declaration.url",
-    expected: { "declaration-a11y": "A" },
+    expected: { "declaration_a11yGrade": "A" },
   },
   {
     mention: "Accessibilité : partiellement conforme",
     declarationUrl: "https://declaration.url",
-    expected: { "declaration-a11y": "B" },
+    expected: { "declaration_a11yGrade": "B" },
   },
   {
     mention: "Accessibilité : non conforme",
     declarationUrl: "https://declaration.url",
-    expected: { "declaration-a11y": "C" },
+    expected: { "declaration_a11yGrade": "C" },
   },
 ];
 

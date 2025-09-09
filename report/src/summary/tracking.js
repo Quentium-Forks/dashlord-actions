@@ -1,10 +1,10 @@
 /** @param {TrackingReport} report */
 const summary = (report) => {
   if (report) {
-    const trackingService = report.service;
-    if (trackingService) {
+    const { service } = report;
+    if (service) {
       return {
-        trackingService,
+        trackingService: service,
       };
     }
   }

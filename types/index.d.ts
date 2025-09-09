@@ -397,7 +397,7 @@ type BetagouvReport = {
   };
 };
 
-type DashLordReport = UrlReport[];
+type DashLordReport = (UrlReport | null)[];
 
 type PageReport = {
   grade: string;

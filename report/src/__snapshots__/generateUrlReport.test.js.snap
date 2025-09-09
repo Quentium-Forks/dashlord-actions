@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`generateUrlReport should allow empty/invalid reports 1`] = `
 {
@@ -24,9 +24,6 @@ exports[`generateUrlReport should allow empty/invalid reports 1`] = `
   "stats": null,
   "summary": {
     "codescanCount": 42,
-    "codescanGrade": undefined,
-    "declaration-a11y": undefined,
-    "declaration-rgpd": undefined,
   },
   "testssl": null,
   "thirdparties": null,
@@ -144,12 +141,11 @@ exports[`generateUrlReport should generate latest report for a valid url 1`] = `
   },
   "summary": {
     "404Count": 3,
-    "404Grade": "A",
+    "404Grade": "B",
     "codescanCount": 42,
-    "codescanGrade": undefined,
-    "declaration-a11y": "F",
-    "declaration-rgpd-ml": "D",
-    "declaration-rgpd-pc": "D",
+    "declaration_a11yGrade": "F",
+    "declaration_rgpd-mlGrade": "D",
+    "declaration_rgpd-pcGrade": "D",
     "sonarcloudGrade": "F",
   },
   "testssl": [

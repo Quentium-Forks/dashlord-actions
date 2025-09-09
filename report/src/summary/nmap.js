@@ -1,21 +1,39 @@
 /** @param {number} count */
-const getGradeOpenPorts = (count) => {
-  return count > 2 ? "F" : "A";
+const getGrade = (count) => {
+  if (count > 8) {
+    return "F";
+  } else if (count > 6) {
+    return "E";
+  } else if (count > 4) {
+    return "D";
+  } else if (count > 2) {
+    return "C";
+  } else if (count > 0) {
+    return "B";
+  } else {
+    return "A";
+  }
 };
-
-//todo: improve
 
 /** @param {NmapReport} report */
 const summary = (report) => {
   if (report) {
-    const nmapGrade = report.grade;
-    const nmapOpenPortsCount = report.open_ports && report.open_ports.length;
-    const nmapOpenPortsGrade = getGradeOpenPorts(nmapOpenPortsCount);
-    if (nmapGrade) {
+    const { grade, open_ports } = report;
+    const portsGrade = open_ports ? getGrade(open_ports.length) : undefined;
+    if (grade && open_ports) {
       return {
-        nmapGrade,
-        nmapOpenPortsCount,
-        nmapOpenPortsGrade,
+        nmapGrade: grade,
+        nmapOpenPortsGrade: portsGrade,
+        nmapOpenPortsCount: open_ports.length,
+      };
+    } else if (grade) {
+      return {
+        nmapGrade: grade,
+      };
+    } else if (open_ports) {
+      return {
+        nmapOpenPortsGrade: portsGrade,
+        nmapOpenPortsCount: open_ports.length,
       };
     }
   }

@@ -1,29 +1,22 @@
-const grades = ["F", "D", "A"];
-
 /** @param {DeclarationRgpdReport} report */
 const summary = (report) => {
-  // not known
-  if (!report || !report.map) {
-    return {
-      "declaration-rgpd": undefined,
-    };
-  }
+  if (report && report.length) {
+    const summaryMap = report.map((result) => {
+      let grade = "F";
 
-  const tmpSummary = report.map((result) => {
-    let grade = 0;
+      if (result.declarationUrl) {
+        grade = "D";
 
-    if (result.declarationUrl) {
-      grade += 1;
-
-      if (result.score === result.maxScore) {
-        grade += 1;
+        if (result.score === result.maxScore) {
+          grade = "A";
+        }
       }
-    }
 
-    return [`declaration-rgpd-${result.slug}`, grades[grade]];
-  });
+      return [`declaration_rgpd-${result.slug}Grade`, grade];
+    });
 
-  return Object.fromEntries(tmpSummary);
+    return Object.fromEntries(summaryMap);
+  }
 };
 
 module.exports = summary;

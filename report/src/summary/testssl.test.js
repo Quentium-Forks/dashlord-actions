@@ -16,8 +16,8 @@ const tests = [
     report: [{ id: "overall_grade", finding: "X" }],
     expected: {
       testsslGrade: "X",
-      testsslExpireDate: null,
-      testsslExpireSoon: null,
+      testsslExpireDate: undefined,
+      testsslExpireSoon: undefined,
     },
   },
 ];
