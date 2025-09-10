@@ -11,14 +11,16 @@ const summary = (report) => {
   const { site } = report || {};
   if (report && site && site.length) {
     const { alerts } = site[0];
-    const maxCritic = alerts.sort((a, b) => b.riskcode.localeCompare(a.riskcode))[0];
-    const grade = getGrade(maxCritic);
-    const risks = alerts.filter((a) => a.riskcode !== "0");
-    if (grade) {
-      return {
-        zapGrade: grade,
-        zapCount: risks.length,
-      };
+    if (alerts.length) {
+      const maxCritic = alerts.sort((a, b) => b.riskcode.localeCompare(a.riskcode))[0];
+      const grade = getGrade(maxCritic);
+      const risks = alerts.filter((a) => a.riskcode !== "0");
+      if (grade) {
+        return {
+          zapGrade: grade,
+          zapCount: risks.length,
+        };
+      }
     }
   }
 };

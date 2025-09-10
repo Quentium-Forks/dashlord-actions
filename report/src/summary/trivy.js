@@ -33,15 +33,17 @@ const summary = (report) => {
           image.Results.flatMap((res) => res.Vulnerabilities || [])) ||
         []
     );
-    const critical = allVulns.filter((vuln) => vuln.Severity === "CRITICAL").length;
-    const high = allVulns.filter((vuln) => vuln.Severity === "HIGH").length;
-    const medium = allVulns.filter((vuln) => vuln.Severity === "MEDIUM").length;
-    const grade = getGrade(critical, high, medium);
-    if (grade) {
-      return {
-        trivyGrade: grade,
-        trivyCount: allVulns.length,
-      };
+    if (allVulns.length) {
+      const critical = allVulns.filter((vuln) => vuln.Severity === "CRITICAL").length;
+      const high = allVulns.filter((vuln) => vuln.Severity === "HIGH").length;
+      const medium = allVulns.filter((vuln) => vuln.Severity === "MEDIUM").length;
+      const grade = getGrade(critical, high, medium);
+      if (grade) {
+        return {
+          trivyGrade: grade,
+          trivyCount: allVulns.length,
+        };
+      }
     }
   }
 };
