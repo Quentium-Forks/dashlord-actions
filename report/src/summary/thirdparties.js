@@ -28,6 +28,16 @@ const summary = (report) => {
         trackersGrade: trackersGrade,
         trackersCount: trackers.length,
       };
+    } else if (cookies) {
+      return {
+        cookiesGrade: cookiesGrade,
+        cookiesCount: cookies.length,
+      };
+    } else if (trackers) {
+      return {
+        trackersGrade: trackersGrade,
+        trackersCount: trackers.length,
+      };
     }
   }
 };
