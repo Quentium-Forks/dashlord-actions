@@ -11,16 +11,15 @@ const summary = (report) => {
     const mentionIndex = mention ? Object.values(grades).indexOf(mention) : -1;
 
     let grade = undefined;
-    if (mention !== undefined && mention !== null)
-      if (mentionIndex > -1) {
-        if (declarationUrl) {
-          grade = Object.keys(grades)[mentionIndex];
-        } else if (mention === "Accessibilité : non conforme") {
-          grade = "D";
-        } else {
-          grade = "F";
-        }
+    if (mention !== undefined && mention !== null && mentionIndex > -1) {
+      if (declarationUrl) {
+        grade = Object.keys(grades)[mentionIndex];
+      } else if (mention === "Accessibilité : non conforme") {
+        grade = "D";
+      } else {
+        grade = "F";
       }
+    }
 
     if (grade) {
       return {
