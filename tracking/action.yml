@@ -24,20 +24,21 @@ runs:
       run: |
         set +e
 
-        if grep -Eq "(eulerian)" ./tracking-html.html; then
+        # E: regex, i: insensitive, w: word, q: quiet
+        if grep -Eiwq "(eulerian)" ./tracking-html.html; then
           JSON="{\"tracking\": true, \"service\": \"eulerian\"}"
-        elif grep -Eq "(matomo)" ./tracking-html.html; then
+        elif grep -Eiwq "(matomo)" ./tracking-html.html; then
           JSON="{\"tracking\": true, \"service\": \"matomo\"}"
-        elif grep -Eq "(piwik)" ./tracking-html.html; then
+        elif grep -Eiwq "(piwik)" ./tracking-html.html; then
           JSON="{\"tracking\": true, \"service\": \"piwik\"}"
-        elif grep -Eq "(piano|aticdn|smarttag)" ./tracking-html.html; then
+        elif grep -Eiwq "(piano|aticdn|smarttag)" ./tracking-html.html; then
           JSON="{\"tracking\": true, \"service\": \"piano\"}"
-        elif grep -Eq "(google|gtag|gtm)" ./tracking-html.html; then
+        elif grep -Eiwq "(gtag|gtm)" ./tracking-html.html; then
           JSON="{\"tracking\": true, \"service\": \"google-analytics\"}"
-        elif grep -Eq "(tarteaucitron|tac)" ./tracking-html.html; then
+        elif grep -Eiwq "(tarteaucitron|tacjs)" ./tracking-html.html; then
           JSON="{\"tracking\": null, \"service\": \"non-disponible\"}"
         else
-          JSON="{\"tracking\": false}"
+          JSON="{\"tracking\": false, \"service\": \"aucun\"}"
         fi
 
         echo "$JSON" > ${{ github.workspace }}/${{ inputs.output }}
