@@ -1,10 +1,10 @@
 name: "SonarCloud data extraction action"
 
-description: "Extract data from sonarcloud API"
+description: "Extract data from SonarCloud API"
 
 inputs:
-  repos:
-    description: "Comma separated list of repos to get results for"
+  projects:
+    description: "Comma separated list of project ids to get results for"
     required: true
   output:
     description: "Path to output file. defaults to sonarcloud.json"
@@ -30,4 +30,4 @@ runs:
       run: |
         cd ${{ github.action_path }}
 
-        node ${{ github.action_path }}/src/index.js ${{ inputs.repos }} > ${{ github.workspace }}/${{ inputs.output }}
+        node ${{ github.action_path }}/src/index.js ${{ inputs.projects }} > ${{ github.workspace }}/${{ inputs.output }}

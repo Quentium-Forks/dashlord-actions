@@ -1,6 +1,6 @@
 name: "Run Mozilla HTTP Observatory scan"
 
-description: "Run a scan on https://observatory.mozilla.org API"
+description: "Run a scan on HTTP Observatory API"
 
 inputs:
   url:

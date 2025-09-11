@@ -1,6 +1,6 @@
 name: "Trivy scan action"
 
-description: "Generate a trivy report on a given image"
+description: "Generate a Trivy report on a given image"
 
 inputs:
   images:

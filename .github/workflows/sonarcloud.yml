@@ -39,13 +39,14 @@ jobs:
       - name: Run action
         uses: ./sonarcloud
         with:
-          repos: sensgithub/eHospital,zabbix/zabbix
+          repos: microsoft_kiota,sonarlint-visualstudio,aws_aws-sdk-java-v2
           output: sonar-output.json
 
       - name: Test action results
         shell: bash
         run: |
           cat sonar-output.json
-          [[ $(cat sonar-output.json | jq -r '. | length') -eq "2" ]] || (echo "Error: Should get 2 results" && exit 1)
+          [[ $(cat sonar-output.json | jq -r '. | length') -eq "3" ]] || (echo "Error: Should get 3 results" && exit 1)
           cat sonar-output.json | jq -e '.[0].result.status.vulnerabilities' 
           cat sonar-output.json | jq -e '.[1].result.status.vulnerabilities'
+          cat sonar-output.json | jq -e '.[2].result.status.vulnerabilities'

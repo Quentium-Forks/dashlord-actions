@@ -1,6 +1,6 @@
 name: "Trivy GHCR scan action"
 
-description: "Generate a trivy report on your GHCR images"
+description: "Generate a Trivy report on your GHCR images"
 
 inputs:
   repos:

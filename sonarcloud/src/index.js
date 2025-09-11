@@ -27,26 +27,17 @@ const sonarApi = (path, params = {}, method = "GET") =>
 
 /**
  *
- * @param {string} repo
- */
-const getSonarCloudKey = (repo) => {
-  const [org, repo2] = repo.split("/");
-  return `${org}_${repo2}`;
-};
-
-/**
- *
- * @param {string[]} repos
+ * @param {string[]} projects
  * @returns
  */
-const generateJson = async (repos) => {
+const generateJson = async (projects) => {
   const queries = await Promise.all(
-    repos.map((repo) =>
+    projects.map((project) =>
       sonarApi("project_branches/list", {
-        project: getSonarCloudKey(repo),
+        project: project,
       }).then((result) => {
         if (result.errors && result.errors.length) {
-          console.error(`Invalid result for ${repo}`);
+          console.error(`Invalid result for ${project}`);
           return null;
         }
         const mainBranch =
@@ -61,7 +52,7 @@ const generateJson = async (repos) => {
         }
 
         return {
-          repo,
+          project,
           result: {
             ...mainBranch,
             commit: {
@@ -80,12 +71,12 @@ const generateJson = async (repos) => {
 module.exports = generateJson;
 
 if (require.main === module) {
-  const repos = process.argv[process.argv.length - 1];
-  if (repos.match(/^([^/]+\/[^/]+)(,[^/]+\/[^/]+)*$/)) {
-    generateJson(repos.split(",").map((repo) => repo.trim())).then((results) =>
+  const projects = process.argv[process.argv.length - 1];
+  if (projects.match(/^([\w-]+)(,[\w-]+)*$/)) {
+    generateJson(projects.split(",").map((project) => project.trim())).then((results) =>
       console.log(JSON.stringify(results, null, 2))
     );
   } else {
-    console.error("USAGE: index.js org1/repo1,org1/repo2,org2/repo5");
+    console.error("USAGE: index.js <company>_<project>,<project_id>,<company>-<project>-<version>");
   }
 }
