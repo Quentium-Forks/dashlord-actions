@@ -39,7 +39,7 @@ jobs:
       - name: Run action
         uses: ./sonarcloud
         with:
-          repos: microsoft_kiota,sonarlint-visualstudio,aws_aws-sdk-java-v2
+          projects: microsoft_kiota,sonarlint-visualstudio,aws_aws-sdk-java-v2
           output: sonar-output.json
 
       - name: Test action results
