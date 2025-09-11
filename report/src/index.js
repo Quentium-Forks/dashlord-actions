@@ -1,6 +1,4 @@
-const fs = require("fs");
 const path = require("path");
-const YAML = require("yaml");
 const core = require("@actions/core");
 
 const { getUrls, writeFile, getConfig } = require("./utils");
@@ -15,11 +13,9 @@ const DASHLORD_REPO_PATH = process.env.DASHLORD_REPO_PATH || ".";
  * @returns {DashLordReport} Full DashLoard report as JSON
  */
 const generateReport = () => {
-  const urls = getUrls()
+  return getUrls()
     .map((url) => generateUrlReport(url))
     .filter(Boolean);
-  /** @ts-expect-error #TODO #WTH */
-  return urls;
 };
 
 const generateJsons = async () => {

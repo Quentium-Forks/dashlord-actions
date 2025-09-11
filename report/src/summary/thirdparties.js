@@ -1,34 +1,42 @@
 /** @param {number} count */
-const getGradeTrackers = (count) => {
-  return count > 10 ? "F" : count > 2 ? "C" : count > 0 ? "B" : "A";
-};
-
-/** @param {number} count */
-const getGradeCookies = (count) => {
-  return count > 10
-    ? "F"
-    : count > 5
-    ? "E"
-    : count > 2
-    ? "C"
-    : count > 0
-    ? "B"
-    : "A";
+const getGrade = (count) => {
+  if (count > 10) {
+    return "F";
+  } else if (count > 7) {
+    return "E";
+  } else if (count > 4) {
+    return "D";
+  } else if (count > 2) {
+    return "C";
+  } else if (count > 0) {
+    return "B";
+  } else {
+    return "A";
+  }
 };
 
 /** @param {ThirdPartiesReport} report */
 const summary = (report) => {
   if (report) {
-    const trackersCount = report.trackers && report.trackers.length;
-    const trackersGrade = report.trackers && getGradeTrackers(trackersCount);
-    const cookiesCount = report.cookies && report.cookies.length;
-    const cookiesGrade = report.cookies && getGradeCookies(cookiesCount);
-    if (cookiesCount !== undefined) {
+    const { cookies, trackers } = report;
+    const cookiesGrade = getGrade(cookies?.length);
+    const trackersGrade = getGrade(trackers?.length);
+    if (cookies && trackers) {
       return {
-        cookiesGrade,
-        cookiesCount,
-        trackersGrade,
-        trackersCount,
+        cookiesGrade: cookiesGrade,
+        cookiesCount: cookies.length,
+        trackersGrade: trackersGrade,
+        trackersCount: trackers.length,
+      };
+    } else if (cookies) {
+      return {
+        cookiesGrade: cookiesGrade,
+        cookiesCount: cookies.length,
+      };
+    } else if (trackers) {
+      return {
+        trackersGrade: trackersGrade,
+        trackersCount: trackers.length,
       };
     }
   }

@@ -1,19 +1,17 @@
 /** @param {SslTestReport} report */
 const summary = (report) => {
-  if (report) {
-    const overallGrade =
-      report.find &&
-      report.find((entry) => entry.id === "overall_grade");
-    const value = overallGrade && overallGrade.finding;
+  if (report && report.length) {
+    const overallGrade = report.find((entry) => entry.id === "overall_grade");
+    const grade = overallGrade && overallGrade.finding;
 
-    const notAfterNode = report.find((r) => r.id === "cert_notAfter");
+    const notAfterNode = report.find((entry) => entry.id === "cert_notAfter");
     const notAfterIntermediateNode = report.find(
       (r) => r.id === "intermediate_cert_notAfter <#1>"
     );
 
     // warn a month before
     const warningDelay = 30 * 24 * 60 * 60 * 1000;
-    let expirationDate = null;
+    let expirationDate = undefined;
     if (notAfterNode) {
       if (notAfterIntermediateNode) {
         const closest = Math.min(
@@ -26,20 +24,19 @@ const summary = (report) => {
       }
     }
 
-    const expiresSoon =
-      expirationDate && new Date().getTime() + warningDelay > expirationDate;
+    const expireSoon = expirationDate && new Date().getTime() + warningDelay > expirationDate;
 
-    if (value) {
-      let testsslExpireDate = null;
-      if (expirationDate) {
-        testsslExpireDate = new Date();
-        testsslExpireDate.setTime(expirationDate);
-      }
+    if (grade && expirationDate) {
+      let expireDate = new Date();
+      expireDate.setTime(expirationDate);
       return {
-        testsslExpireSoon: expiresSoon,
-        testsslExpireDate:
-          testsslExpireDate && testsslExpireDate.toISOString(),
-        testsslGrade: value,
+        testsslExpireSoon: expireSoon,
+        testsslExpireDate: expireDate.toISOString(),
+        testsslGrade: grade,
+      };
+    } else if (grade) {
+      return {
+        testsslGrade: grade,
       };
     }
   }

@@ -9,8 +9,9 @@ type UrlReportSummary = {
   codescanGrade?: string;
   cookiesCount?: number;
   cookiesGrade?: string;
-  "declaration-a11y"?: string;
-  "declaration-rgpd"?: string;
+  declaration_a11yGrade?: string;
+  "declaration_rgpd-mlGrade"?: string;
+  "declaration_rgpd-pcGrade"?: string;
   dependabotCount?: number;
   dependabotGrade?: string;
   dsfrGrade?: string;
@@ -37,7 +38,7 @@ type UrlReportSummary = {
   testsslGrade?: string;
   trackersCount?: number;
   trackersGrade?: string;
-  trivy?: number;
+  trivyCount?: number;
   trivyGrade?: string;
   uptime?: number;
   uptimeGrade?: string;

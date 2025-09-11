@@ -1,10 +1,13 @@
 /** @param {EcoIndexReport} report */
 const summary = (report) => {
-  const result = (report && report.length && report[0]) || null;
-  if (result && result.grade) {
-    return {
-      ecoindexGrade: result.grade,
-    };
+  if (report) {
+    const row = report.length > 0 && report[0];
+    const grade = row ? row.grade : undefined;
+    if (grade) {
+      return {
+        ecoindexGrade: grade,
+      };
+    }
   }
 };
 

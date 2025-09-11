@@ -13,7 +13,7 @@ const tests = [
         declarationUrl: undefined,
       },
     ],
-    expected: { "declaration-rgpd-ml": "F", "declaration-rgpd-pc": "F" },
+    expected: { "declaration_rgpd-mlGrade": "F", "declaration_rgpd-pcGrade": "F" },
   },
   {
     name: "ML undefined & PC incomplete",
@@ -29,7 +29,7 @@ const tests = [
         score: 3,
       },
     ],
-    expected: { "declaration-rgpd-ml": "F", "declaration-rgpd-pc": "D" },
+    expected: { "declaration_rgpd-mlGrade": "F", "declaration_rgpd-pcGrade": "D" },
   },
   {
     name: "ML incomplete & PC undefined",
@@ -45,7 +45,7 @@ const tests = [
         declarationUrl: undefined,
       },
     ],
-    expected: { "declaration-rgpd-ml": "D", "declaration-rgpd-pc": "F" },
+    expected: { "declaration_rgpd-mlGrade": "D", "declaration_rgpd-pcGrade": "F" },
   },
   {
     name: "ML incomplete & PC incomplete",
@@ -63,7 +63,7 @@ const tests = [
         score: 2,
       },
     ],
-    expected: { "declaration-rgpd-ml": "D", "declaration-rgpd-pc": "D" },
+    expected: { "declaration_rgpd-mlGrade": "D", "declaration_rgpd-pcGrade": "D" },
   },
   {
     name: "ML valid & PC incomplete",
@@ -81,7 +81,7 @@ const tests = [
         score: 2,
       },
     ],
-    expected: { "declaration-rgpd-ml": "A", "declaration-rgpd-pc": "D" },
+    expected: { "declaration_rgpd-mlGrade": "A", "declaration_rgpd-pcGrade": "D" },
   },
   {
     name: "ML incomplete & PC valid",
@@ -99,7 +99,7 @@ const tests = [
         score: 6,
       },
     ],
-    expected: { "declaration-rgpd-ml": "D", "declaration-rgpd-pc": "A" },
+    expected: { "declaration_rgpd-mlGrade": "D", "declaration_rgpd-pcGrade": "A" },
   },
   {
     name: "ML valid & PC valid",
@@ -117,7 +117,7 @@ const tests = [
         score: 1,
       },
     ],
-    expected: { "declaration-rgpd-ml": "A", "declaration-rgpd-pc": "A" },
+    expected: { "declaration_rgpd-mlGrade": "A", "declaration_rgpd-pcGrade": "A" },
   },
   {
     name: "ML undefined & PC valid",
@@ -133,7 +133,7 @@ const tests = [
         score: 1,
       },
     ],
-    expected: { "declaration-rgpd-ml": "F", "declaration-rgpd-pc": "A" },
+    expected: { "declaration_rgpd-mlGrade": "F", "declaration_rgpd-pcGrade": "A" },
   },
   {
     name: "ML valid & PC undefined",
@@ -149,17 +149,17 @@ const tests = [
         declarationUrl: undefined,
       },
     ],
-    expected: { "declaration-rgpd-ml": "A", "declaration-rgpd-pc": "F" },
+    expected: { "declaration_rgpd-mlGrade": "A", "declaration_rgpd-pcGrade": "F" },
   },
   {
     name: "Invalid report 1",
     report: {},
-    expected: { "declaration-rgpd": undefined },
+    expected: undefined,
   },
   {
     name: "Invalid report 2",
     report: null,
-    expected: { "declaration-rgpd": undefined },
+    expected: undefined,
   },
 ];
 

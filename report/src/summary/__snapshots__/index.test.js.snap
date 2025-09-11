@@ -1,16 +1,16 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`should compute summary for some URL report 1`] = `
 {
   "404Count": 5,
-  "404Grade": "A",
+  "404Grade": "B",
   "apdex": 1,
   "apdexGrade": "A",
   "codescanCount": 0,
   "codescanGrade": "A",
   "cookiesCount": 2,
   "cookiesGrade": "B",
-  "declaration-a11y": "F",
+  "declaration_a11yGrade": "F",
   "dependabotCount": 4,
   "dependabotGrade": "D",
   "httpGrade": "A+",

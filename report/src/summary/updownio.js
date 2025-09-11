@@ -1,14 +1,14 @@
 /** @param {UpDownReport} report */
 const summary = (report) => {
   if (report) {
-    const uptime = report.uptime;
-    const apdex = report.metrics && report.metrics.apdex;
-    if (uptime !== undefined) {
+    const { uptime, metrics, uptimeGrade, apdexGrade } = report;
+    const apdex = metrics?.apdex;
+    if (uptime !== undefined && uptime !== null) {
       return {
-        apdex,
-        apdexGrade: report.apdexGrade,
-        uptime,
-        uptimeGrade: report.uptimeGrade,
+        apdex: apdex,
+        apdexGrade: apdexGrade,
+        uptime: uptime,
+        uptimeGrade: uptimeGrade,
       };
     }
   }

@@ -2,18 +2,19 @@ const { scoreToGrade } = require("../utils");
 
 /** @param {LighthouseReport} report */
 const summary = (report) => {
-  /* @type {LighthouseReport} */
-  const reportData = (report && Array.isArray(report) && report[0]) || report; // use first lhr report
-  if (reportData && reportData.categories) {
-    const lhrCategories = reportData.categories;
+  const { categories } = report || {};
+  if (report && categories) {
+    return Object.keys(categories).reduce((scores, key) => {
+      const categoryKey = /** @type {LighthouseReportCategoryKey} */ (key);
+      const { score } = categories[categoryKey];
 
-    return Object.keys(lhrCategories).reduce((scores, key) => {
-      const score = lhrCategories[key].score;
-      return {
-        ...scores,
-        [`lighthouse_${key}`]: score,
-        [`lighthouse_${key}Grade`]: scoreToGrade(score),
-      };
+      if (score !== undefined && score !== null) {
+        return {
+          ...scores,
+          [`lighthouse_${key}`]: score,
+          [`lighthouse_${key}Grade`]: scoreToGrade(score),
+        };
+      }
     }, {});
   }
 };
