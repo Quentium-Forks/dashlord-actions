@@ -26,7 +26,7 @@ jobs:
       sites: ${{ steps.init.outputs.sites }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - id: init
         uses: ./init-from-txt

@@ -28,7 +28,7 @@ jobs:
       config: ${{ steps.init.outputs.config }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - shell: bash
         run: |
@@ -70,7 +70,7 @@ jobs:
       config: ${{ steps.init.outputs.config }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - shell: bash
         run: |

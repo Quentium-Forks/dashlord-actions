@@ -18,9 +18,9 @@ jobs:
     name: Test declaration-a11y
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: "lts/*"
 
@@ -40,7 +40,7 @@ jobs:
     name: declaration-a11y action
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - shell: bash
         run: |

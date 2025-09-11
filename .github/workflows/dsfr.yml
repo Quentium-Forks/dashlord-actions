@@ -28,7 +28,7 @@ jobs:
             url: "https://beta.gouv.fr"
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Test DSFR detection on ${{ matrix.item.name }}
         uses: ./dsfr
@@ -53,7 +53,7 @@ jobs:
             url: "https://mesevenementsemploi.pole-emploi.fr/"
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Test DSFR detection on ${{ matrix.item.name }}
         uses: ./dsfr

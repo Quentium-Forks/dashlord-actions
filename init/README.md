@@ -16,7 +16,7 @@ jobs:
       config: ${{ steps.init.outputs.config }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - id: init
         uses: SocialGouv/dashlord-actions/init@v1
