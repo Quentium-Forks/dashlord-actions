@@ -30,7 +30,7 @@ type LighthouseReportAudits = {
   };
 };
 
-type LighthouseReport = {
+type LighthouseReportRow = {
   requestedUrl: string;
   finalUrl: string;
   runWarnings: string[];
@@ -38,3 +38,5 @@ type LighthouseReport = {
   fetchTime: string;
   audits: LighthouseReportAudits;
 };
+
+type LighthouseReport = LighthouseReportRow[];

@@ -67,7 +67,7 @@ const nucleiCleanup = (result, url) =>
  *
  * @param {UrlReport["lhr"]} result Lighthouse JSON content
  *
- * @returns {LighthouseReport[]|null} minified JSON content
+ * @returns {LighthouseReport|null} minified JSON content
  */
 const lhrCleanup = (result) => {
   if (!result) {

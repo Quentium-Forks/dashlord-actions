@@ -2,20 +2,21 @@ const { scoreToGrade } = require("../utils");
 
 /** @param {LighthouseReport} report */
 const summary = (report) => {
-  const { categories } = report || {};
-  if (report && categories) {
-    return Object.keys(categories).reduce((scores, key) => {
-      const categoryKey = /** @type {LighthouseReportCategoryKey} */ (key);
-      const { score } = categories[categoryKey];
+  if (report) {
+    const row = report.length > 0 && report[0];
+    const categories = row ? row.categories : undefined;
+    if (categories) {
+      return Object.keys(categories).reduce((scores, key) => {
+        const categoryKey = /** @type {LighthouseReportCategoryKey} */ (key);
+        const { score } = categories[categoryKey];
 
-      if (score !== undefined && score !== null) {
         return {
           ...scores,
-          [`lighthouse_${key}`]: score,
-          [`lighthouse_${key}Grade`]: scoreToGrade(score),
+          [`lighthouse_${key}`]: score || 0,
+          [`lighthouse_${key}Grade`]: score ? scoreToGrade(score) : "F",
         };
-      }
-    }, {});
+      }, {});
+    }
   }
 };
 

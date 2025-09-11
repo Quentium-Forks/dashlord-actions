@@ -1,17 +1,19 @@
 /** @param {number} count */
 const getGrade = (count) => {
-  if (count > 8) {
+  if (count > 10) {
     return "F";
-  } else if (count > 6) {
+  } else if (count > 8) {
     return "E";
-  } else if (count > 4) {
+  } else if (count > 6) {
     return "D";
-  } else if (count > 2) {
+  } else if (count > 4) {
     return "C";
-  } else if (count > 0) {
+  } else if (count > 2) {
     return "B";
-  } else {
+  } else if (count > 0) {
     return "A";
+  } else {
+    return "no-ports-open";
   }
 };
 

@@ -2185,7 +2185,7 @@ const urlReport = {
       timestamp: "2021-09-03T23:55:12.45345032Z",
     },
   ],
-  lhr: {
+  lhr: [{
     requestedUrl: "https://www.fabrique.social.gouv.fr/",
     finalUrl: "https://www.fabrique.social.gouv.fr/",
     fetchTime: "2021-09-03T23:52:34.263Z",
@@ -2318,5 +2318,5 @@ const urlReport = {
         },
       },
     },
-  },
+  }],
 };

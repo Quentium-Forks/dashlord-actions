@@ -21,7 +21,7 @@ const tests = [
     expected: {
       nmapGrade: "B",
       nmapOpenPortsCount: 1,
-      nmapOpenPortsGrade: "B",
+      nmapOpenPortsGrade: "A",
     },
   },
   {
@@ -61,7 +61,7 @@ const tests = [
     expected: {
       nmapGrade: "F",
       nmapOpenPortsCount: 3,
-      nmapOpenPortsGrade: "C",
+      nmapOpenPortsGrade: "B",
     },
   },
 ];

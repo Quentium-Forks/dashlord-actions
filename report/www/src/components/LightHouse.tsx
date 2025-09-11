@@ -70,12 +70,12 @@ const toSize = (bytes: number) => {
   return `${kb}.${(rest / 100).toFixed()}Kb`;
 };
 
-type LighthouseProps = { data: UrlReport["lhr"]; url: string };
+type LighthouseProps = { data: UrlReport["lhr"]; url: string; };
 
 export const LightHouse: React.FC<LighthouseProps> = ({ data, url }) => {
   const audits =
     (Array.isArray(data) && data) ||
-    ([data] as LighthouseReport[]).filter(
+    ([data] as LighthouseReport).filter(
       (audit) => !!audit.audits.metrics.details
     );
 

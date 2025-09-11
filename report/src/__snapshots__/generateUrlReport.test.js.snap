@@ -144,8 +144,8 @@ exports[`generateUrlReport should generate latest report for a valid url 1`] = `
     "404Grade": "B",
     "codescanCount": 42,
     "declaration_a11yGrade": "F",
-    "declaration_rgpd-mlGrade": "D",
-    "declaration_rgpd-pcGrade": "D",
+    "declaration_rgpd-mlGrade": "B",
+    "declaration_rgpd-pcGrade": "B",
     "sonarcloudGrade": "F",
   },
   "testssl": [

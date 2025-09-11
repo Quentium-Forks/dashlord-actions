@@ -367,7 +367,7 @@ type UrlReport = UrlConfig & {
   ecoindex?: EcoIndexReport;
   github_repository?: PageReport | null;
   http?: HttpReport | null;
-  lhr?: LighthouseReport | LighthouseReport[] | null;
+  lhr?: LighthouseReport | LighthouseReportRow | null;
   nmap?: NmapReport | null;
   nuclei?: NucleiReport | null;
   screenshot?: boolean | null;

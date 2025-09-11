@@ -8,7 +8,7 @@ const tests = [
   },
   {
     title: "sample report",
-    report: {
+    report: [{
       categories: {
         performance: {
           score: 1,
@@ -20,7 +20,7 @@ const tests = [
           score: 1,
         },
       },
-    },
+    }],
     expected: {
       lighthouse_performance: 1,
       lighthouse_performanceGrade: "A",
@@ -32,7 +32,7 @@ const tests = [
   },
   {
     title: "good performance score",
-    report: {
+    report: [{
       categories: {
         performance: {
           score: 1,
@@ -56,7 +56,7 @@ const tests = [
           },
         },
       },
-    },
+    }],
     expected: {
       lighthouse_performance: 1,
       lighthouse_performanceGrade: "A",
@@ -68,7 +68,7 @@ const tests = [
   },
   {
     title: "bad performance score",
-    report: {
+    report: [{
       categories: {
         performance: {
           score: 0.1,
@@ -92,7 +92,7 @@ const tests = [
           },
         },
       },
-    },
+    }],
     expected: {
       lighthouse_performance: 0.1,
       lighthouse_performanceGrade: "F",
