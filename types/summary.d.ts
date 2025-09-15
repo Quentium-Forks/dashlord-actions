@@ -16,6 +16,7 @@ type UrlReportSummary = {
   dependabotGrade?: string;
   dsfrGrade?: string;
   ecoindexGrade?: string;
+  httpDate?: string;
   httpGrade?: string;
   lighthouse_accessibility?: number;
   lighthouse_accessibilityGrade?: string;

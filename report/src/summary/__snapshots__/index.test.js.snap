@@ -13,6 +13,7 @@ exports[`should compute summary for some URL report 1`] = `
   "declaration_a11yGrade": "F",
   "dependabotCount": 4,
   "dependabotGrade": "D",
+  "httpDate": "2021-09-03T22:39:59.000Z",
   "httpGrade": "A+",
   "lighthouse_accessibility": 0.96,
   "lighthouse_accessibilityGrade": "A",
