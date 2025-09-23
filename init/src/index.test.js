@@ -7,34 +7,25 @@ const sampleConfig = jest
   .readFileSync(path.join(__dirname, "..", "dashlord.yml"))
   .toString();
 
-jest.mock("fs", () => {
-  const actualFs = jest.requireActual("fs");
-  return {
-    ...actualFs,
-    promises: {
-      access: jest.fn(),
-    },
-    existsSync: jest.fn(),
-    readFileSync: jest.fn(),
-    constants: actualFs.constants, // preserve constants like O_RDONLY
-  };
-});
+jest.mock("fs", () => ({
+  promises: {
+    access: jest.fn(),
+  },
+  existsSync: jest.fn(),
+  readFileSync: jest.fn(),
+}));
+
+const actionsCoreSpied = jest.spyOn(core, "getInput");
+let inputs = {};
 
 const { getOutputs, getSiteTools, getSiteSubpages } = require("./index");
 
-let inputs = {};
 
 describe("should parse dashlord config", () => {
-  beforeAll(() => {
-    // Mock getInput
-    jest.spyOn(core, "getInput").mockImplementation((name) => {
-      return inputs[name];
-    });
-  });
   beforeEach(() => {
     // Reset inputs
     jest.resetAllMocks();
-
+    actionsCoreSpied.mockImplementation(name => inputs[name]);
     inputs = {};
   });
   test("when no input", async () => {
@@ -49,6 +40,8 @@ describe("should parse dashlord config", () => {
     fs.existsSync.mockReturnValue(true);
     fs.readFileSync.mockReturnValue(sampleConfig);
     const outputs = getOutputs();
+    console.log("===========================when single invalid url input", {outputs})
+    expect(outputs.sites.length).toBe(0);
     expect(outputs.sites).toMatchSnapshot();
   });
 
@@ -57,6 +50,7 @@ describe("should parse dashlord config", () => {
     fs.existsSync.mockReturnValue(true);
     fs.readFileSync.mockReturnValue(sampleConfig);
     const outputs = getOutputs();
+    expect(outputs.sites.length).toBe(1);
     expect(outputs.sites).toMatchSnapshot();
   });
 
@@ -65,6 +59,34 @@ describe("should parse dashlord config", () => {
     fs.existsSync.mockReturnValue(true);
     fs.readFileSync.mockReturnValue(sampleConfig);
     const outputs = getOutputs();
+    expect(outputs.sites.length).toBe(2);
+    expect(outputs.sites).toMatchSnapshot();
+  });
+
+  test("when unknown tag input", async () => {
+    inputs.tags = "tag99";
+    fs.existsSync.mockReturnValue(true);
+    fs.readFileSync.mockReturnValue(sampleConfig);
+    const outputs = getOutputs();
+    expect(outputs.sites.length).toBe(0);
+    expect(outputs.sites).toMatchSnapshot();
+  });
+
+  test("when single valid tag input", async () => {
+    inputs.tags = "tag1";
+    fs.existsSync.mockReturnValue(true);
+    fs.readFileSync.mockReturnValue(sampleConfig);
+    const outputs = getOutputs();
+    expect(outputs.sites.length).toBe(1);
+    expect(outputs.sites).toMatchSnapshot();
+  });
+
+  test("when multiple tags input", async () => {
+    inputs.tags = "tag1,tag2";
+    fs.existsSync.mockReturnValue(true);
+    fs.readFileSync.mockReturnValue(sampleConfig);
+    const outputs = getOutputs();
+    expect(outputs.sites.length).toBe(2);
     expect(outputs.sites).toMatchSnapshot();
   });
 
@@ -85,25 +107,25 @@ describe("should parse dashlord config", () => {
     });
     core.info(`tools=${JSON.stringify(tools)}`);
     expect(tools).toEqual({
-      404: true,
-      budget_page: false,
+      screenshot: false,
+      nmap: true,
+      zap: true,
+      wappalyzer: true,
+      http: true,
+      testssl: true,
+      lighthouse: true,
+      thirdparties: true,
+      nuclei: false,
+      updownio: false,
+      dependabot: true,
       codescan: true,
       "declaration-a11y": true,
       "declaration-rgpd": true,
-      dependabot: true,
+      stats: false,
+      budget_page: false,
+      404: true,
       dsfr: true,
       ecoindex: true,
-      http: true,
-      lighthouse: true,
-      nmap: true,
-      nuclei: false,
-      screenshot: false,
-      stats: false,
-      testssl: true,
-      thirdparties: true,
-      updownio: false,
-      wappalyzer: true,
-      zap: true,
     });
   });
 

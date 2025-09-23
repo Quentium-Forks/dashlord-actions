@@ -11,6 +11,10 @@ inputs:
     description: "Tool to run or use all tools"
     required: false
     default: ""
+  tags:
+    description: "Filter by tags (comma separated)"
+    required: false
+    default: ""
 
 outputs:
   urls:
