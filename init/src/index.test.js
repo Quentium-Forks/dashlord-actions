@@ -7,19 +7,23 @@ const sampleConfig = jest
   .readFileSync(path.join(__dirname, "..", "dashlord.yml"))
   .toString();
 
-jest.mock("fs", () => ({
-  promises: {
-    access: jest.fn(),
-  },
-  existsSync: jest.fn(),
-  readFileSync: jest.fn(),
-}));
+jest.mock("fs", () => {
+  const actualFs = jest.requireActual("fs");
+  return {
+    ...actualFs,
+    promises: {
+      access: jest.fn(),
+    },
+    existsSync: jest.fn(),
+    readFileSync: jest.fn(),
+    constants: actualFs.constants, // preserve constants like O_RDONLY
+  };
+});
 
 const actionsCoreSpied = jest.spyOn(core, "getInput");
 let inputs = {};
 
 const { getOutputs, getSiteTools, getSiteSubpages } = require("./index");
-
 
 describe("should parse dashlord config", () => {
   beforeEach(() => {
@@ -40,7 +44,7 @@ describe("should parse dashlord config", () => {
     fs.existsSync.mockReturnValue(true);
     fs.readFileSync.mockReturnValue(sampleConfig);
     const outputs = getOutputs();
-    console.log("===========================when single invalid url input", {outputs})
+    console.log("===========================when single invalid url input", { outputs })
     expect(outputs.sites.length).toBe(0);
     expect(outputs.sites).toMatchSnapshot();
   });
