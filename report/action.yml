@@ -10,9 +10,10 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-node@v5
+    - name: Setup Node.js
+      uses: actions/setup-node@v5
       with:
-        node-version: "22"
+        node-version: "lts/*"
 
     - name: Build
       id: build
