@@ -60,7 +60,7 @@ jobs:
 
       - uses: ./declaration-rgpd
         with:
-          url: https://conseillers-entreprises.service-public.fr
+          url: https://conseillers-entreprises.service-public.gouv.fr
           thirdparties: '{"trackers":[],"cookies":[],"headers":{"cache-control":"s-maxage=31536000,stale-while-revalidate","content-encoding":"gzip","content-type":"text/html;charset=utf-8","date":"Tue,06Sep202210:00:11GMT","etag":"\"34252-Rg+tkwu+qSjfdl/R14jfhbBq4KA\"","server":"nginx","vary":"Accept-Encoding","x-nextjs-cache":"HIT","x-powered-by":"Next.js"}}'
           output: rgpd2.json
 
