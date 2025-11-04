@@ -74,11 +74,11 @@ exports[`Should render FooterSite 1`] = `
             >
               <a
                 class="fr-footer__content-link"
-                href="https://service-public.gouv.fr"
+                href="https://service-public.fr"
                 target="_blank"
-                title="service-public.gouv.fr - ouvre une nouvelle fenêtre"
+                title="service-public.fr - ouvre une nouvelle fenêtre"
               >
-                service-public.gouv.fr
+                service-public.fr
               </a>
             </li>
             <li
