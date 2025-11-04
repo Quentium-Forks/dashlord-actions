@@ -9,7 +9,7 @@
     "@actions/core": "^1.11.1",
     "lodash.omit": "^4.5.0",
     "lodash.pick": "^4.4.0",
-    "yaml": "^2.8.0"
+    "yaml": "^2.8.1"
   },
   "scripts": {
     "test": "jest"
@@ -23,12 +23,12 @@
     "@types/jest": "^30.0.0",
     "@types/lodash.omit": "^4.5.9",
     "@types/lodash.pick": "^4.4.9",
-    "@types/node": "^24.1.0",
+    "@types/node": "^24.10.0",
     "@types/node-fetch": "^2.6.13",
     "babel-eslint": "^10.1.0",
     "eslint": "^8.57.1",
-    "jest": "^30.0.5",
+    "jest": "^30.2.0",
     "prettier": "^3.6.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.3"
   }
 }
