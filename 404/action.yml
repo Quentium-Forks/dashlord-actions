@@ -40,5 +40,11 @@ runs:
         OUT=$(wget --no-check-certificate --user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0 - dashlord" --level=${{ inputs.depth }} --spider --recursive 2>&1 > /dev/null ${{ inputs.url }})
         echo "$OUT" | yarn -s wget-parser > ${{ github.workspace }}/${{ inputs.output }}
 
+        # temp fix if url has to be www
+        if [ jq ".broken | length" ${{ github.workspace }}/${{ inputs.output }} -eq 0 || jq ".links | length" ${{ github.workspace }}/${{ inputs.output }} -eq 0 ]; then
+          OUT=$(wget --no-check-certificate --user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0 - dashlord" --level=${{ inputs.depth }} --spider --recursive 2>&1 > /dev/null "https://www.${{ inputs.url#*// }}")
+          echo "$OUT" | yarn -s wget-parser > ${{ github.workspace }}/${{ inputs.output }}
+        fi
+
         cat ${{ github.workspace }}/${{ inputs.output }} | jq ".links | length"
         cat ${{ github.workspace }}/${{ inputs.output }} | jq ".broken | length"
