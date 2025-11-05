@@ -78,12 +78,12 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>{dashlordConfig.title?.trim()}</title>
         <meta charSet="utf-8" lang="FR-fr" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        {!dashlordConfig.seo && <meta name="robots" content="noindex, nofollow" />}
         <meta name="description" content="Dashboard des applications" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico" />
       </Head>
