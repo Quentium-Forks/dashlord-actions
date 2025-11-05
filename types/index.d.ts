@@ -78,6 +78,7 @@ type SslTestReport = SslTestReportEntry[];
 type HttpReport = {
   scan: HttpReportScan;
   tests: Record<string, HttpReportTestResult>;
+  error?: string;
 };
 
 type HttpReportScan = {
