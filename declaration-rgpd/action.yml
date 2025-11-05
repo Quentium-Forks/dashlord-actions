@@ -40,9 +40,11 @@ runs:
       run: |
         cd ${{ github.action_path }}
 
-        THIRDPARTIES=$(echo "${{ inputs.thirdparties }}" | jq -c 'del(.endpoints)')
+        THIRDPARTIES=$(echo ${{ inputs.thirdparties }} | jq -c 'del(.endpoints)')
         THIRDPARTIES_STR="${THIRDPARTIES//'/\'}" # escapes single quotes
         THIRDPARTIES_STR="${THIRDPARTIES//\\"/"}" # remove escaped double quotes
+
+        echo $THIRDPARTIES_STR
 
         node ${{ github.action_path }}/src/index.js ${{ inputs.url }} ${{ github.workspace }}/result.html "${THIRDPARTIES_STR}" > ${{ github.workspace }}/${{ inputs.output }}
 

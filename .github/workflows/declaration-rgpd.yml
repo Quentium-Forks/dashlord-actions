@@ -42,10 +42,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      - shell: bash
-        run: |
-          ls -la
-
       - uses: ./declaration-rgpd
         with:
           url: https://labonnealternance.apprentissage.beta.gouv.fr
@@ -60,26 +56,14 @@ jobs:
 
       - uses: ./declaration-rgpd
         with:
-          url: https://conseillers-entreprises.service-public.gouv.fr
+          url: https://recommandations-collaboratives.beta.gouv.fr
           thirdparties: '{"trackers":[],"cookies":[],"headers":{"cache-control":"s-maxage=31536000,stale-while-revalidate","content-encoding":"gzip","content-type":"text/html;charset=utf-8","date":"Tue,06Sep202210:00:11GMT","etag":"\"34252-Rg+tkwu+qSjfdl/R14jfhbBq4KA\"","server":"nginx","vary":"Accept-Encoding","x-nextjs-cache":"HIT","x-powered-by":"Next.js"}}'
-          output: rgpd2.json
+          output: rgpd.json
 
       - shell: bash
         run: |
           ls -la
-          cat rgpd2.json
-          [[ $(cat rgpd2.json | jq '.[0].score') -eq "4" ]] || (echo "Error: Should score 4" && exit 1)
-
-      - uses: ./declaration-rgpd
-        with:
-          url: https://recommandations-collaboratives.beta.gouv.fr/
-          thirdparties: '{"trackers":[],"cookies":[],"headers":{"cache-control":"s-maxage=31536000,stale-while-revalidate","content-encoding":"gzip","content-type":"text/html;charset=utf-8","date":"Tue,06Sep202210:00:11GMT","etag":"\"34252-Rg+tkwu+qSjfdl/R14jfhbBq4KA\"","server":"nginx","vary":"Accept-Encoding","x-nextjs-cache":"HIT","x-powered-by":"Next.js"}}'
-          output: rgpd3.json
-
-      - shell: bash
-        run: |
-          ls -la
-          cat rgpd3.json
-          [[ $(cat rgpd3.json | jq '.[0].score') -eq "4" ]] || (echo "Error: ml Should score 4" && exit 1)
-          [[ $(cat rgpd3.json | jq '.[1].score') -eq "4" ]] || (echo "Error: pc Should score 4" && exit 1)
-          [[ $(cat rgpd3.json | jq '.[1].declarationUrl') = "\"https://recommandations-collaboratives.beta.gouv.fr/confidentialite/\"" ]] || (echo "Error: pc invalid declaration URL" && exit 1)
+          cat rgpd.json
+          [[ $(cat rgpd.json | jq '.[0].score') -eq "4" ]] || (echo "Error: ml Should score 4" && exit 1)
+          [[ $(cat rgpd.json | jq '.[1].score') -eq "4" ]] || (echo "Error: pc Should score 4" && exit 1)
+          [[ $(cat rgpd.json | jq '.[1].declarationUrl') = "\"https://recommandations-collaboratives.beta.gouv.fr/confidentialite/\"" ]] || (echo "Error: pc invalid declaration URL" && exit 1)
