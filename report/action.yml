@@ -38,7 +38,7 @@ runs:
         cp www/src/report.json ${{ github.workspace }}/${{ inputs.output }}
 
     - name: Build Next.js website
-      if: ${{ inputs.no-build != 'true' }}
+      if: ${{ inputs.build-website == 'true' }}
       id: build
       shell: bash
       env:
