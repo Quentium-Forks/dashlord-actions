@@ -9,7 +9,10 @@ const tests = [
   {
     title: "sample report",
     report: { grade: "X" },
-    expected: { httpGrade: "X" },
+    expected: {
+      httpDate: "1970-01-01T00:00:00.000Z",
+      httpGrade: "X"
+    },
   },
 ];
 
