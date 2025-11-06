@@ -10,6 +10,10 @@ inputs:
     description: "Path to output file. defaults to report.json"
     required: true
     default: "report.json"
+  build-website:
+    description: "Whether to build the Next.js website"
+    required: false
+    default: "true"
 
 runs:
   using: "composite"
@@ -19,7 +23,22 @@ runs:
       with:
         node-version: "lts/*"
 
-    - name: Build
+    - name: Generate Dashlord report
+      id: report
+      shell: bash
+      run: |
+        cd ${{ github.action_path }}
+
+        yarn
+
+        # this creates config.json, report.json and trends.json
+        node src
+
+        # save report in workspace for artifact
+        cp src/report.json ${{ github.workspace }}/${{ inputs.output }}
+
+    - name: Build Next.js website
+      if: ${{ inputs.no-build != 'true' }}
       id: build
       shell: bash
       env:
@@ -35,14 +54,8 @@ runs:
         echo "REPOSITORY_URL: $REPOSITORY_URL"
         echo "NEXT_PUBLIC_BASE_PATH: $NEXT_PUBLIC_BASE_PATH"
 
-        cd ${{ github.action_path }}
+        cd ${{ github.action_path }}/www
 
-        yarn
-
-        # this creates config.json, report.json and trends.json to build the website
-        node src
-
-        cd www
         yarn
 
         export NODE_OPTIONS=--max-old-space-size=8192 # prevents heap out of memory ?
@@ -51,9 +64,6 @@ runs:
 
         # prevent gh-pages jekyll build
         touch out/.nojekyll
-
-        # save report in workspace for artifact
-        cp src/report.json ${{ github.workspace }}/${{ inputs.output }}
 
         # save the build for gh-pages publication
         mv out ${{ github.workspace }}/build
