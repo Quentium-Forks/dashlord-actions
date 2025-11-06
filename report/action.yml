@@ -6,6 +6,10 @@ inputs:
   base-path:
     description: "base-path for the next.js build. see https://nextjs.org/docs/api-reference/next.config.js/basepath"
     required: false
+  output:
+    description: "Path to output file. defaults to report.json"
+    required: true
+    default: "report.json"
 
 runs:
   using: "composite"
@@ -49,7 +53,7 @@ runs:
         touch out/.nojekyll
 
         # save report in workspace for artifact
-        cp src/report.json ${{ github.workspace }}/report.json
+        cp src/report.json ${{ github.workspace }}/${{ inputs.output }}
 
         # save the build for gh-pages publication
         mv out ${{ github.workspace }}/build
