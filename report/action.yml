@@ -27,6 +27,10 @@ runs:
       id: report
       shell: bash
       run: |
+        export DASHLORD_REPO_PATH=${{ github.workspace }}
+
+        echo "DASHLORD_REPO_PATH: $DASHLORD_REPO_PATH"
+
         cd ${{ github.action_path }}
 
         yarn
@@ -44,13 +48,9 @@ runs:
       env:
         SKIP_PREFLIGHT_CHECK: "true"
       run: |
-        export REPOSITORY_NAME=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')
-        export DASHLORD_REPO_PATH=${{ github.workspace }}
         export NEXT_PUBLIC_REPOSITORY_URL=$(echo 'https://github.com/${{ github.repository }}')
         export NEXT_PUBLIC_BASE_PATH=$([[ -n "${{ inputs.base-path }}" ]] && echo "${{ inputs.base-path }}" || echo "")
 
-        echo "REPOSITORY_NAME: $REPOSITORY_NAME"
-        echo "DASHLORD_REPO_PATH: $DASHLORD_REPO_PATH"
         echo "REPOSITORY_URL: $REPOSITORY_URL"
         echo "NEXT_PUBLIC_BASE_PATH: $NEXT_PUBLIC_BASE_PATH"
 
