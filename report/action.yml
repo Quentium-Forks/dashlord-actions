@@ -32,10 +32,10 @@ runs:
         yarn
 
         # this creates config.json, report.json and trends.json
-        node src
+        node src/index.js
 
         # save report in workspace for artifact
-        cp src/report.json ${{ github.workspace }}/${{ inputs.output }}
+        cp www/src/report.json ${{ github.workspace }}/${{ inputs.output }}
 
     - name: Build Next.js website
       if: ${{ inputs.no-build != 'true' }}
