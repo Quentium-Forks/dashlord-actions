@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: test
         uses: SocialGouv/dashlord-actions/trivy-ghcr@v1
@@ -19,7 +19,7 @@ jobs:
           repos: socialgouv/sample-next-app,socialgouv/www
           output: trivy.json
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: trivy.json
           path: trivy.json
