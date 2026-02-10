@@ -37,15 +37,15 @@ runs:
         export LANG=en_GB.UTF-8 
 
         # wget return error exit code when errors founds
-        OUT=$(wget --no-check-certificate --user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0 - dashlord" --level=${{ inputs.depth }} --spider --recursive 2>&1 > /dev/null ${{ inputs.url }})
+        OUT=$(wget -e robots=off --no-check-certificate --user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0 - dashlord" --level=${{ inputs.depth }} --spider --recursive 2>&1 > /dev/null ${{ inputs.url }})
         echo "$OUT" | yarn -s wget-parser > ${{ github.workspace }}/${{ inputs.output }}
 
         # temp fix if url has to be www
-        if [ jq ".broken | length" ${{ github.workspace }}/${{ inputs.output }} -eq 0 || jq ".links | length" ${{ github.workspace }}/${{ inputs.output }} -eq 0 ]; then
-          if ! $(echo ${{ inputs.url }} | grep -q "www.") ; then
-            OUT=$(wget --no-check-certificate --user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0 - dashlord" --level=${{ inputs.depth }} --spider --recursive 2>&1 > /dev/null $(echo ${{ inputs.url }} | sed -e 's#https://#https://www.#')
-            echo "$OUT" | yarn -s wget-parser > ${{ github.workspace }}/${{ inputs.output }}
-          fi
+        broken=$(jq '.broken | length' ${{ github.workspace }}/${{ inputs.output }})
+        links=$(jq '.links | length' ${{ github.workspace }}/${{ inputs.output }})
+        if { [ "${broken}" -eq 0 ] || [ "${links}" -eq 0 ]; } && ! echo ${{ inputs.url }} | grep -q "www." ; then
+          OUT=$(wget -e robots=off --no-check-certificate --user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0 - dashlord" --level=${{ inputs.depth }} --spider --recursive 2>&1 > /dev/null $(echo ${{ inputs.url }} | sed -e 's#https://#https://www.#'))
+          echo "$OUT" | yarn -s wget-parser > ${{ github.workspace }}/${{ inputs.output }}
         fi
 
         cat ${{ github.workspace }}/${{ inputs.output }} | jq ".links | length"
