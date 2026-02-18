@@ -38,6 +38,7 @@ runs:
 
         # wget return error exit code when errors founds
         OUT=$(timeout -p -f 580 wget -e robots=off --no-check-certificate --user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0 - dashlord" --level=${{ inputs.depth }} --spider --recursive 2>&1 > /dev/null ${{ inputs.url }} || true)
+        echo "wget output: $OUT"
         echo "$OUT" | yarn -s wget-parser > ${{ github.workspace }}/${{ inputs.output }}
 
         # temp fix if url has to be www
