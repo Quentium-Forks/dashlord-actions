@@ -1,4 +1,4 @@
-name: "Acessibility declaration scan action"
+name: "Accessibility declaration scan action"
 
 description: "Détecte la présence d'une déclaration d'accessibilité"
 
